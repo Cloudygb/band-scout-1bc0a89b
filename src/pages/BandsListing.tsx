@@ -27,7 +27,7 @@ import { mockBands } from "@/data/mockBands";
 
 const BandsListing = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState<string>("");
+  const [selectedGenre, setSelectedGenre] = useState<string>("all");
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [priceRange, setPriceRange] = useState([0, 300]);
   const [selectedBand, setSelectedBand] = useState<BandProfile | null>(null);
@@ -36,7 +36,7 @@ const BandsListing = () => {
     const matchesSearch = band.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                         band.bio.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesGenre = selectedGenre === "" || band.genre.includes(selectedGenre);
+    const matchesGenre = selectedGenre === "all" || band.genre.includes(selectedGenre);
     
     const matchesPrice = band.pricing?.hourlyRate && 
                         band.pricing.hourlyRate >= priceRange[0] && 
@@ -70,7 +70,7 @@ const BandsListing = () => {
                 <SelectValue placeholder="All Genres" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Genres</SelectItem>
+                <SelectItem value="all">All Genres</SelectItem>
                 <SelectItem value="Rock">Rock</SelectItem>
                 <SelectItem value="Jazz">Jazz</SelectItem>
                 <SelectItem value="Classical">Classical</SelectItem>
@@ -127,7 +127,7 @@ const BandsListing = () => {
         <div className="flex justify-end mt-4">
           <Button variant="outline" className="mr-2" onClick={() => {
             setSearchTerm("");
-            setSelectedGenre("");
+            setSelectedGenre("all");
             setSelectedDate(undefined);
             setPriceRange([0, 300]);
           }}>
