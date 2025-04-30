@@ -64,11 +64,12 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				music: {
-					purple: '#6E59A5',
-					'light-purple': '#9b87f5',
-					orange: '#F97316',
-					dark: '#1A1F2C',
-					light: '#F3F4F6',
+					teal: '#1ABC9C',
+					'light-teal': '#3DD8B9',
+					orange: '#FF6F00',
+					'light-orange': '#FF9E40',
+					dark: '#333333',
+					light: '#FFFFFF',
 				}
 			},
 			borderRadius: {

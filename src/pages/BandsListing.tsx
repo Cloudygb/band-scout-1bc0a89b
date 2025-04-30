@@ -19,93 +19,11 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { BandProfile } from "@/types/user";
 import { format } from "date-fns";
-import { CalendarIcon, Music, Play } from "lucide-react";
+import { CalendarIcon, Play } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-
-// Mock band data
-const mockBands: BandProfile[] = [
-  {
-    id: "1",
-    userId: "1",
-    name: "The Melody Makers",
-    bio: "We're a versatile 4-piece band specializing in jazz standards and contemporary blues. Perfect for cocktail hours, dinner music, and sophisticated events.",
-    genre: ["Jazz", "Blues"],
-    members: 4,
-    areasServed: ["Boston", "Cambridge", "Somerville"],
-    setList: ["Autumn Leaves", "Fly Me To The Moon", "Summertime", "Georgia On My Mind"],
-    sampleSongs: [
-      { title: "Our Jazz Demo", url: "https://example.com/song1" },
-      { title: "Blues Sample", url: "https://example.com/song2" },
-    ],
-    coverPhoto: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&q=80",
-    approved: true,
-    pricing: {
-      hourlyRate: 150,
-      fullEventRate: 800,
-    },
-  },
-  {
-    id: "2",
-    userId: "2",
-    name: "Electric Pulse",
-    bio: "High-energy rock band that will get your guests dancing! We cover classic rock hits and modern chart-toppers with our own unique style.",
-    genre: ["Rock", "Pop"],
-    members: 5,
-    areasServed: ["New York City", "Brooklyn", "Queens"],
-    setList: ["Sweet Child O' Mine", "Don't Stop Believin'", "Livin' on a Prayer"],
-    sampleSongs: [
-      { title: "Rock Medley", url: "https://example.com/song3" },
-      { title: "Pop Compilation", url: "https://example.com/song4" },
-    ],
-    coverPhoto: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-    approved: true,
-    pricing: {
-      hourlyRate: 200,
-      fullEventRate: 1200,
-    },
-  },
-  {
-    id: "3",
-    userId: "3",
-    name: "Acoustic Journey",
-    bio: "Acoustic duo offering a mellow, intimate sound perfect for ceremonies, cocktail hours, and smaller gatherings.",
-    genre: ["Folk", "Acoustic"],
-    members: 2,
-    areasServed: ["San Francisco", "Oakland", "Marin County"],
-    setList: ["Hallelujah", "Blackbird", "Landslide"],
-    sampleSongs: [
-      { title: "Acoustic Covers", url: "https://example.com/song5" }
-    ],
-    coverPhoto: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80",
-    approved: true,
-    pricing: {
-      hourlyRate: 120,
-      fullEventRate: 600,
-    },
-  },
-  {
-    id: "4",
-    userId: "4",
-    name: "Classical Strings",
-    bio: "Elegant string quartet performing classical pieces and refined arrangements of popular songs.",
-    genre: ["Classical", "Instrumental"],
-    members: 4,
-    areasServed: ["Chicago", "Evanston", "Oak Park"],
-    setList: ["Canon in D", "Air on the G String", "Eine Kleine Nachtmusik"],
-    sampleSongs: [
-      { title: "Classical Favorites", url: "https://example.com/song6" },
-      { title: "Popular Songs - Classical Style", url: "https://example.com/song7" },
-    ],
-    coverPhoto: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
-    approved: true,
-    pricing: {
-      hourlyRate: 180,
-      fullEventRate: 1000,
-    },
-  },
-];
+import { mockBands } from "@/data/mockBands";
 
 const BandsListing = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -160,6 +78,10 @@ const BandsListing = () => {
                 <SelectItem value="Folk">Folk</SelectItem>
                 <SelectItem value="Blues">Blues</SelectItem>
                 <SelectItem value="Electronic">Electronic</SelectItem>
+                <SelectItem value="Funk">Funk</SelectItem>
+                <SelectItem value="Soul">Soul</SelectItem>
+                <SelectItem value="R&B">R&B</SelectItem>
+                <SelectItem value="Ambient">Ambient</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -211,7 +133,7 @@ const BandsListing = () => {
           }}>
             Reset Filters
           </Button>
-          <Button>Apply Filters</Button>
+          <Button className="bg-music-teal hover:bg-music-teal/90">Apply Filters</Button>
         </div>
       </div>
       
@@ -220,7 +142,7 @@ const BandsListing = () => {
         {filteredBands.map((band) => (
           <div 
             key={band.id} 
-            className="band-card bg-card rounded-lg overflow-hidden shadow-md"
+            className="band-card bg-card rounded-lg overflow-hidden shadow-md cursor-pointer"
             onClick={() => setSelectedBand(band)}
           >
             <div className="aspect-[16/9] overflow-hidden relative">
@@ -232,7 +154,7 @@ const BandsListing = () => {
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <h3 className="text-white font-bold text-xl">{band.name}</h3>
                 <div className="flex flex-wrap gap-1 mt-1">
-                  {band.genre.map((g) => (
+                  {band.genre.slice(0, 3).map((g) => (
                     <Badge key={g} variant="outline" className="bg-black/50 text-white border-none">
                       {g}
                     </Badge>
@@ -247,13 +169,13 @@ const BandsListing = () => {
                   <p className="font-medium mt-1">${band.pricing?.hourlyRate}/hour</p>
                 </div>
                 <div className="audio-player cursor-pointer">
-                  <Play className="h-4 w-4 text-music-purple" />
+                  <Play className="h-4 w-4 text-music-teal" />
                   <span className="text-xs">Listen</span>
                 </div>
               </div>
               <p className="text-sm text-muted-foreground line-clamp-2">{band.bio}</p>
               <div className="mt-4 flex justify-end">
-                <Button size="sm">View Details</Button>
+                <Button size="sm" className="bg-music-orange hover:bg-music-orange/90">View Details</Button>
               </div>
             </div>
           </div>
@@ -336,7 +258,7 @@ const BandsListing = () => {
                 
                 <div className="mt-8 flex justify-end space-x-4">
                   <Button variant="outline" onClick={() => setSelectedBand(null)}>Close</Button>
-                  <Button>Book This Band</Button>
+                  <Button className="bg-music-teal hover:bg-music-teal/90">Book This Band</Button>
                 </div>
               </div>
             </>
