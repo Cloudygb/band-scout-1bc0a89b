@@ -6,7 +6,7 @@ import { Music, CalendarClock, User } from "lucide-react";
 const HowItWorks = () => {
   return (
     <div className="container mx-auto py-16 px-4">
-      <h1 className="text-4xl font-bold mb-6 text-center">How GigFinder Unite Works</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center">How Band Scout Works</h1>
       <p className="text-xl text-muted-foreground mb-16 max-w-3xl mx-auto text-center">
         Our platform makes it easy to connect talented musicians with event hosts looking for the perfect musical experience.
       </p>
@@ -62,7 +62,7 @@ const HowItWorks = () => {
           
           <div className="mt-8">
             <Link to="/signup?type=client">
-              <Button size="lg" className="bg-music-purple hover:bg-music-purple/90">Find Musicians Now</Button>
+              <Button size="lg" className="bg-music-teal hover:bg-music-teal/90">Find Musicians Now</Button>
             </Link>
           </div>
         </div>
@@ -156,7 +156,7 @@ const HowItWorks = () => {
       <div className="bg-card p-8 rounded-xl shadow-sm max-w-3xl mx-auto mb-12 text-center">
         <h2 className="text-2xl font-bold mb-4">Ready to get started?</h2>
         <p className="mb-8">
-          Join GigFinder Unite today and be part of a community that celebrates live music!
+          Join Band Scout today and be part of a community that celebrates live music!
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/signup?type=client">
@@ -173,7 +173,7 @@ const HowItWorks = () => {
         
         <div className="max-w-3xl mx-auto grid gap-6">
           <div className="bg-card p-6 rounded-lg shadow-sm">
-            <h3 className="font-medium text-lg mb-2">How much does it cost to use GigFinder Unite?</h3>
+            <h3 className="font-medium text-lg mb-2">How much does it cost to use Band Scout?</h3>
             <p className="text-muted-foreground">
               Creating an account is free for both musicians and clients. Musicians pay a small commission only when they receive a booking through our platform.
             </p>

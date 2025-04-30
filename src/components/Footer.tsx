@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Music } from "lucide-react";
 
@@ -9,8 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <Music className="h-6 w-6 text-music-purple" />
-              <span className="font-bold text-xl">GigFinder Unite</span>
+              <Music className="h-6 w-6 text-music-teal" />
+              <span className="font-bold text-xl">Band Scout</span>
             </Link>
             <p className="text-muted-foreground">
               Connecting talented musicians with event hosts for unforgettable experiences.
@@ -98,7 +97,7 @@ const Footer = () => {
         
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} GigFinder Unite. All rights reserved.
+            &copy; {new Date().getFullYear()} Band Scout. All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="text-muted-foreground hover:text-music-purple transition-colors">
