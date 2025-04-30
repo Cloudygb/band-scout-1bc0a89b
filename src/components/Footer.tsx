@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Music } from "lucide-react";
 
@@ -82,9 +83,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-music-purple transition-colors">
+                <Link to="/privacy-policy" className="text-muted-foreground hover:text-music-purple transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-music-purple transition-colors">
