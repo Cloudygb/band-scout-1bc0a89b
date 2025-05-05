@@ -51,12 +51,15 @@ const WelcomeStory = () => {
           {/* Step 1: The Problem */}
           <div className={`story-section ${currentStep === 0 ? 'active' : 'hidden'}`}>
             <div className="flex justify-center mb-4 relative">
-              <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble" />
-              <img 
-                src={RACCOON_EYES} 
-                alt="Raccoon Eyes" 
-                className="absolute w-24 h-auto top-[30%] left-1/2 -translate-x-1/2"
-              />
+              <div className="relative" style={{ width: '140px', height: '140px' }}>
+                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '50%', transform: 'translateX(-50%)' }} />
+                <img 
+                  src={RACCOON_EYES} 
+                  alt="Raccoon Eyes" 
+                  className="absolute" 
+                  style={{ width: '24px', height: 'auto', top: '30%', left: '50%', transform: 'translateX(-50%)' }}
+                />
+              </div>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-center text-bandit-brown-dark mb-4">
               Finding the right band shouldn't be a heist!
@@ -172,12 +175,15 @@ const WelcomeStory = () => {
               Ready to make your event unforgettable?
             </h2>
             <div className="flex justify-center my-8 relative">
-              <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-40 h-40 animate-bobble" />
-              <img 
-                src={RACCOON_EYES} 
-                alt="Raccoon Eyes" 
-                className="absolute w-32 h-auto top-[30%] left-1/2 -translate-x-1/2"
-              />
+              <div className="relative" style={{ width: '160px', height: '160px' }}>
+                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-40 h-40 animate-bobble absolute" style={{ left: '50%', transform: 'translateX(-50%)' }} />
+                <img 
+                  src={RACCOON_EYES} 
+                  alt="Raccoon Eyes" 
+                  className="absolute" 
+                  style={{ width: '32px', height: 'auto', top: '30%', left: '50%', transform: 'translateX(-50%)' }}
+                />
+              </div>
             </div>
             <div className="text-center">
               <Button 

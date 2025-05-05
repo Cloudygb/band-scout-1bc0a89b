@@ -77,8 +77,8 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
           className="w-full h-auto relative z-10"
         />
         
-        {/* Head layer - separated positioning from animation */}
-        <div className="absolute top-[15px] z-20" style={{ left: '25%' }}>
+        {/* Head layer - using fixed pixel values instead of percentages */}
+        <div className="absolute" style={{ top: '15px', left: '20px', zIndex: 20 }}>
           <div className="animate-bobble">
             <img 
               src={RACCOON_HEAD} 
@@ -86,8 +86,8 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
               className="w-36 h-auto"
             />
             
-            {/* Eyes layer that follows mouse or wanders randomly - properly positioned on the head */}
-            <div className="absolute top-[30%] left-1/2 -translate-x-1/2 z-30">
+            {/* Eyes layer - using fixed position relative to head */}
+            <div className="absolute" style={{ top: '30%', left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}>
               <img 
                 ref={eyesRef}
                 src={RACCOON_EYES} 
