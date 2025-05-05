@@ -1,15 +1,17 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { RACCOON_HEAD, RACCOON_EYES } from "@/assets";
 import { Music, Users, CalendarClock, Check } from "lucide-react";
 
 const WelcomeStory = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  // Always start with visible set to true for editing purposes
+  const [isVisible, setIsVisible] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
   
-  // Check if it's the first visit
+  // Comment out the localStorage check for now
+  // We'll keep the code structure so we can easily revert back later
+  /*
   useEffect(() => {
     const hasVisitedBefore = localStorage.getItem("banditWelcomeShown");
     
@@ -18,6 +20,7 @@ const WelcomeStory = () => {
       localStorage.setItem("banditWelcomeShown", "true");
     }
   }, []);
+  */
   
   const handleNextStep = () => {
     if (currentStep < 3) {
