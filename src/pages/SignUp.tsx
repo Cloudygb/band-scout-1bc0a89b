@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,23 +8,31 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Music, User } from "lucide-react";
 import { UserRole } from "@/types/user";
+import { useToast } from "@/hooks/use-toast";
 
 const SignUp = () => {
   const [searchParams] = useSearchParams();
   const initialTab = searchParams.get("type") === "band" ? "band" : "client";
   const [activeTab, setActiveTab] = useState<UserRole>(initialTab as UserRole);
+  const { toast } = useToast();
+  const navigate = useNavigate();
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Sign up form submitted");
-    // This would be replaced with actual authentication logic
-    window.location.href = activeTab === "band" ? "/band-profile-setup" : "/client-profile-setup";
+    
+    toast({
+      title: "Test Account Available",
+      description: "For testing, please use the test account: test@bandit.com / password123",
+    });
+    
+    navigate("/login");
   };
 
   return (
@@ -102,6 +110,16 @@ const SignUp = () => {
             Already have an account? <Link to="/login" className="text-music-purple hover:underline">Log in</Link>
           </div>
         </CardContent>
+        <CardFooter className="bg-muted/50 p-4 text-sm text-center">
+          <div className="w-full">
+            <p className="mb-2 font-medium">Testing Account Available</p>
+            <p>For testing purposes, use these credentials:</p>
+            <p className="mt-1 font-mono bg-background p-2 rounded">
+              Email: test@bandit.com<br />
+              Password: password123
+            </p>
+          </div>
+        </CardFooter>
       </Card>
     </div>
   );

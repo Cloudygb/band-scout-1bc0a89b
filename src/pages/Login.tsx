@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,16 +11,46 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  const { login } = useAuth();
+  const navigate = useNavigate();
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login form submitted");
-    // This would be replaced with actual authentication logic
-    window.location.href = "/bands";
+    setIsLoading(true);
+    
+    try {
+      const success = await login(email, password);
+      
+      if (success) {
+        toast({
+          title: "Login successful",
+          description: "Welcome back to Band-it!",
+        });
+        navigate("/welcome");
+      } else {
+        toast({
+          title: "Login failed",
+          description: "Invalid credentials. Try test@bandit.com / password123",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -43,6 +73,7 @@ const Login = () => {
                 required 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={isLoading}
               />
             </div>
             <div className="space-y-2">
@@ -59,15 +90,23 @@ const Login = () => {
                 required 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                disabled={isLoading}
               />
             </div>
-            <Button type="submit" className="w-full bg-bandit-green hover:bg-bandit-green-dark">Log In</Button>
+            <Button 
+              type="submit" 
+              className="w-full bg-bandit-green hover:bg-bandit-green-dark"
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in..." : "Log In"}
+            </Button>
             
             <div className="text-center text-sm text-muted-foreground mt-4">
-              <p>Or continue with</p>
+              <p>Hint: Use test@bandit.com / password123</p>
+              <p className="mt-2">Or continue with</p>
               <div className="flex justify-center gap-2 mt-2">
-                <Button variant="outline" type="button" className="flex-1">Google</Button>
-                <Button variant="outline" type="button" className="flex-1">Facebook</Button>
+                <Button variant="outline" type="button" className="flex-1" disabled={isLoading}>Google</Button>
+                <Button variant="outline" type="button" className="flex-1" disabled={isLoading}>Facebook</Button>
               </div>
             </div>
           </form>
