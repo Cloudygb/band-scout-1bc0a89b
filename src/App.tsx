@@ -18,7 +18,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import BookingSuccess from "./components/BookingSuccess";
 import RaccoonMascot from "./components/RaccoonMascot";
-import WelcomeStory from "./components/WelcomeStory";
 
 const queryClient = new QueryClient();
 
@@ -59,7 +58,6 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <WelcomeStory />
             <RaccoonMascot position={position} />
             <Routes>
               <Route path="/" element={<Layout />}>
