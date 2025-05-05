@@ -57,7 +57,7 @@ const WelcomeStory = () => {
                   src={RACCOON_EYES} 
                   alt="Raccoon Eyes" 
                   className="absolute" 
-                  style={{ width: '24px', height: 'auto', top: '39%', left: '58%', transform: 'translateX(-50%)' }}
+                  style={{ width: '24px', height: 'auto', top: '42%', left: '58%', transform: 'translateX(-50%)' }}
                 />
               </div>
             </div>
