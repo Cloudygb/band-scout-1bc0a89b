@@ -6,11 +6,38 @@ interface RaccoonMascotProps {
   position?: "top-right" | "bottom-right" | "bottom-left" | "top-left";
 }
 
+// All the canned raccoon responses
+const raccoonQuotes = [
+  "I only loot in major keys.",
+  "Breaking into hearts with nothing but vibes.",
+  "I don't steal songs—I liberate them.",
+  "Caught red-pawed… building your playlist.",
+  "Every banger deserves a getaway plan.",
+  "Sniffed out the groove. Left the door open.",
+  "Some gather nuts—I gather hidden gems.",
+  "I scale rooftops and octaves.",
+  "I crash genres like I crash trash cans.",
+  "Slick paws. Smoother transitions.",
+  "I only pull off clean getaways and cleaner beats.",
+  "Unmasking undiscovered artists—literally and figuratively.",
+  "The only thing I swipe is your attention.",
+  "I don't sneak in—I fade in.",
+  "Playlist full of treasures, and not a jewel in sight.",
+  "Just a masked critter with impeccable taste.",
+  "I burgle boredom and leave behind bops.",
+  "One paw in the underground. One paw on the aux.",
+  "It's not a heist—it's a rescue mission for forgotten tunes.",
+  "All I hoard is harmony."
+];
+
 const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
+  const [currentQuote, setCurrentQuote] = useState("");
   const eyesRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const bubbleTimeoutRef = useRef<number | null>(null);
   const maxEyeMovement = 5; // Maximum pixels eyes can move
   
   // Detect mobile devices
@@ -56,6 +83,48 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
     };
   }, [isMobile]);
   
+  // Handle cleanup for quote timeout
+  useEffect(() => {
+    return () => {
+      if (bubbleTimeoutRef.current) {
+        window.clearTimeout(bubbleTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Function to get a random quote
+  const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * raccoonQuotes.length);
+    return raccoonQuotes[randomIndex];
+  };
+
+  // Handle raccoon click
+  const handleRaccoonClick = () => {
+    // Clear existing timeout if there is one
+    if (bubbleTimeoutRef.current) {
+      window.clearTimeout(bubbleTimeoutRef.current);
+    }
+
+    // Get a new random quote different from the current one if possible
+    if (raccoonQuotes.length > 1) {
+      let newQuote;
+      do {
+        newQuote = getRandomQuote();
+      } while (newQuote === currentQuote && raccoonQuotes.length > 1);
+      setCurrentQuote(newQuote);
+    } else {
+      setCurrentQuote(getRandomQuote());
+    }
+
+    // Show the bubble
+    setShowBubble(true);
+
+    // Set timeout to hide bubble after 5 seconds
+    bubbleTimeoutRef.current = window.setTimeout(() => {
+      setShowBubble(false);
+    }, 5000);
+  };
+  
   // Position styles
   const positionStyles = {
     "top-right": "top-0 right-0 pt-20 pr-4",
@@ -63,12 +132,53 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
     "bottom-left": "bottom-0 left-0 pb-4 pl-4",
     "top-left": "top-0 left-0 pt-20 pl-4"
   };
+
+  // Speech bubble positioning based on raccoon position
+  const getBubblePosition = () => {
+    switch (position) {
+      case "top-right":
+        return "bottom-full right-0 mb-4";
+      case "bottom-right":
+        return "top-0 right-0 mt-[-100px]";
+      case "bottom-left":
+        return "top-0 left-0 mt-[-100px]";
+      case "top-left":
+        return "bottom-full left-0 mb-4";
+      default:
+        return "top-0 right-0 mt-[-100px]";
+    }
+  };
+
+  // Speech bubble pointer direction based on raccoon position
+  const getBubblePointerPosition = () => {
+    switch (position) {
+      case "top-right":
+      case "top-left":
+        return "top-full left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-white";
+      case "bottom-right":
+      case "bottom-left":
+        return "bottom-full left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-b-[10px] border-l-transparent border-r-transparent border-b-white";
+      default:
+        return "bottom-full left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-b-[10px] border-l-transparent border-r-transparent border-b-white";
+    }
+  };
   
   return (
     <div 
-      className={`raccoon-container ${positionStyles[position]}`}
+      className={`raccoon-container ${positionStyles[position]} cursor-pointer`}
       ref={containerRef}
+      onClick={handleRaccoonClick}
     >
+      {/* Speech bubble */}
+      {showBubble && (
+        <div className={`absolute z-40 ${getBubblePosition()} max-w-[200px] animate-fade-in`}>
+          <div className="bg-white p-3 rounded-xl shadow-md relative">
+            <p className="font-bubblegum text-sm text-bandit-brown-dark">{currentQuote}</p>
+            <div className={`absolute h-0 w-0 ${getBubblePointerPosition()}`}></div>
+          </div>
+        </div>
+      )}
+      
       <div className="relative w-40">
         {/* Body layer */}
         <img 
