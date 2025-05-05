@@ -83,7 +83,7 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
             <img 
               src={RACCOON_HEAD} 
               alt="Raccoon Head" 
-              className="w-22 h-auto"
+              className="w-36 h-auto"
             />
             
             {/* Eyes layer that follows mouse or wanders randomly - properly positioned on the head */}
