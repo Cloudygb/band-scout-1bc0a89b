@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Music, CalendarClock, User, Sun, Moon, Download } from "lucide-react";
+import { Music, CalendarClock, User, Sun, Moon, Download, Info } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
 const Navigation = () => {
@@ -24,6 +24,10 @@ const Navigation = () => {
           </Link>
           <Link to="/about" className="text-foreground hover:text-bandit-green transition-colors">
             About
+          </Link>
+          <Link to="/welcome" className="text-foreground hover:text-bandit-green transition-colors flex items-center gap-1">
+            <Info className="h-4 w-4" />
+            Welcome Tour
           </Link>
         </nav>
         
