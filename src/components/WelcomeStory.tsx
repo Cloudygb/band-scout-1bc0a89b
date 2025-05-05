@@ -52,7 +52,7 @@ const WelcomeStory = () => {
           <div className={`story-section ${currentStep === 0 ? 'active' : 'hidden'}`}>
             <div className="flex justify-center mb-4 relative">
               <div className="relative" style={{ width: '140px', height: '140px' }}>
-                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '35%', transform: 'translateX(-50%)' }} />
+                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '15%', transform: 'translateX(-50%)' }} />
                 <img 
                   src={RACCOON_EYES} 
                   alt="Raccoon Eyes" 
