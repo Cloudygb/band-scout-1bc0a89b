@@ -77,27 +77,29 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
           className="w-full h-auto relative z-10"
         />
         
-        {/* Head layer with bobble animation - properly positioned on the body */}
-        <div className="absolute top-[15px] z-20 animate-bobble" style={{ left: '35%', transform: 'translateX(-80%)' }}>
-          <img 
-            src={RACCOON_HEAD} 
-            alt="Raccoon Head" 
-            className="w-36 h-auto"
-          />
-          
-          {/* Eyes layer that follows mouse or wanders randomly - properly positioned on the head */}
-          <div className="absolute top-[30%] left-1/2 -translate-x-1/2 z-30">
+        {/* Head layer - separated positioning from animation */}
+        <div className="absolute top-[15px] z-20" style={{ left: '25%' }}>
+          <div className="animate-bobble">
             <img 
-              ref={eyesRef}
-              src={RACCOON_EYES} 
-              alt="Raccoon Eyes" 
-              className={`w-28 h-auto transition-transform duration-300 ${isMobile ? 'animate-wander' : ''}`}
-              style={
-                !isMobile 
-                  ? { transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }
-                  : {}
-              }
+              src={RACCOON_HEAD} 
+              alt="Raccoon Head" 
+              className="w-36 h-auto"
             />
+            
+            {/* Eyes layer that follows mouse or wanders randomly - properly positioned on the head */}
+            <div className="absolute top-[30%] left-1/2 -translate-x-1/2 z-30">
+              <img 
+                ref={eyesRef}
+                src={RACCOON_EYES} 
+                alt="Raccoon Eyes" 
+                className={`w-28 h-auto transition-transform duration-300 ${isMobile ? 'animate-wander' : ''}`}
+                style={
+                  !isMobile 
+                    ? { transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }
+                    : {}
+                }
+              />
+            </div>
           </div>
         </div>
       </div>
