@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -5,11 +6,11 @@ const About = () => {
   return (
     <div className="container mx-auto py-16 px-4">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">About Band Scout</h1>
+        <h1 className="text-4xl font-bold mb-6">About Band-it</h1>
         
         <div className="prose prose-lg">
           <p className="text-xl text-muted-foreground mb-8">
-            Band Scout is a platform dedicated to connecting musical talent with event hosts, creating unforgettable experiences through the power of live music.
+            Band-it is a platform dedicated to connecting musical talent with event hosts, creating unforgettable experiences through the power of live music.
           </p>
           
           <h2 className="text-2xl font-semibold mt-12 mb-4">Our Mission</h2>
@@ -60,14 +61,14 @@ const About = () => {
             </div>
           </div>
           
-          <div className="bg-music-teal/10 p-8 rounded-xl text-center mt-12">
+          <div className="bg-bandit-green/10 p-8 rounded-xl text-center mt-12">
             <h2 className="text-2xl font-bold mb-4">Ready to get started?</h2>
             <p className="mb-6 max-w-lg mx-auto">
-              Whether you're a musician looking to showcase your talent or an event host seeking the perfect sound, Band Scout is here to help.
+              Whether you're a musician looking to showcase your talent or an event host seeking the perfect sound, Band-it is here to help.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link to="/signup?type=band">
-                <Button size="lg">Join as a Musician</Button>
+                <Button size="lg" className="bg-bandit-green hover:bg-bandit-green-dark">Join as a Musician</Button>
               </Link>
               <Link to="/signup?type=client">
                 <Button size="lg" variant="outline">Find Musicians</Button>

@@ -77,16 +77,16 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
           className="w-full h-auto relative z-10"
         />
         
-        {/* Head layer with bobble animation */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 z-20 animate-bobble">
+        {/* Head layer with bobble animation - properly positioned on the body */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 animate-bobble">
           <img 
             src={RACCOON_HEAD} 
             alt="Raccoon Head" 
             className="w-36 h-auto"
           />
           
-          {/* Eyes layer that follows mouse or wanders randomly */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/3 z-30">
+          {/* Eyes layer that follows mouse or wanders randomly - properly positioned on the head */}
+          <div className="absolute top-[30%] left-1/2 -translate-x-1/2 z-30">
             <img 
               ref={eyesRef}
               src={RACCOON_EYES} 

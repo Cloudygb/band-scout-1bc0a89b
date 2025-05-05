@@ -6,7 +6,7 @@ import { Music, CalendarClock, User } from "lucide-react";
 const HowItWorks = () => {
   return (
     <div className="container mx-auto py-16 px-4">
-      <h1 className="text-4xl font-bold mb-6 text-center">How Band Scout Works</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center">How Band-it Works</h1>
       <p className="text-xl text-muted-foreground mb-16 max-w-3xl mx-auto text-center">
         Our platform makes it easy to connect talented musicians with event hosts looking for the perfect musical experience.
       </p>
@@ -20,8 +20,8 @@ const HowItWorks = () => {
           
           <ol className="space-y-8">
             <li className="flex gap-4">
-              <div className="bg-music-purple/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-purple">1</span>
+              <div className="bg-bandit-green/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-green">1</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Create your account</h3>
@@ -30,8 +30,8 @@ const HowItWorks = () => {
             </li>
             
             <li className="flex gap-4">
-              <div className="bg-music-purple/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-purple">2</span>
+              <div className="bg-bandit-green/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-green">2</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Browse available bands</h3>
@@ -40,8 +40,8 @@ const HowItWorks = () => {
             </li>
             
             <li className="flex gap-4">
-              <div className="bg-music-purple/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-purple">3</span>
+              <div className="bg-bandit-green/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-green">3</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Listen to sample tracks</h3>
@@ -50,8 +50,8 @@ const HowItWorks = () => {
             </li>
             
             <li className="flex gap-4">
-              <div className="bg-music-purple/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-purple">4</span>
+              <div className="bg-bandit-green/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-green">4</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Book and coordinate</h3>
@@ -62,7 +62,7 @@ const HowItWorks = () => {
           
           <div className="mt-8">
             <Link to="/signup?type=client">
-              <Button size="lg" className="bg-music-teal hover:bg-music-teal/90">Find Musicians Now</Button>
+              <Button size="lg" className="bg-bandit-green hover:bg-bandit-green-dark">Find Musicians Now</Button>
             </Link>
           </div>
         </div>
@@ -105,8 +105,8 @@ const HowItWorks = () => {
           
           <ol className="space-y-8">
             <li className="flex gap-4">
-              <div className="bg-music-orange/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-orange">1</span>
+              <div className="bg-bandit-brown/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-brown">1</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Create your profile</h3>
@@ -115,8 +115,8 @@ const HowItWorks = () => {
             </li>
             
             <li className="flex gap-4">
-              <div className="bg-music-orange/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-orange">2</span>
+              <div className="bg-bandit-brown/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-brown">2</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Set your availability</h3>
@@ -125,8 +125,8 @@ const HowItWorks = () => {
             </li>
             
             <li className="flex gap-4">
-              <div className="bg-music-orange/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-orange">3</span>
+              <div className="bg-bandit-brown/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-brown">3</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Receive booking requests</h3>
@@ -135,8 +135,8 @@ const HowItWorks = () => {
             </li>
             
             <li className="flex gap-4">
-              <div className="bg-music-orange/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
-                <span className="font-bold text-music-orange">4</span>
+              <div className="bg-bandit-brown/10 h-8 w-8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                <span className="font-bold text-bandit-brown">4</span>
               </div>
               <div>
                 <h3 className="font-medium text-lg">Perform and build reputation</h3>
@@ -156,11 +156,11 @@ const HowItWorks = () => {
       <div className="bg-card p-8 rounded-xl shadow-sm max-w-3xl mx-auto mb-12 text-center">
         <h2 className="text-2xl font-bold mb-4">Ready to get started?</h2>
         <p className="mb-8">
-          Join Band Scout today and be part of a community that celebrates live music!
+          Join Band-it today and be part of a community that celebrates live music!
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/signup?type=client">
-            <Button size="lg">Find Musicians</Button>
+            <Button size="lg" className="bg-bandit-green hover:bg-bandit-green-dark">Find Musicians</Button>
           </Link>
           <Link to="/signup?type=band">
             <Button size="lg" variant="outline">Join as a Musician</Button>
