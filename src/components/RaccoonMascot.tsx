@@ -78,7 +78,7 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
         />
         
         {/* Head layer with bobble animation - properly positioned on the body */}
-        <div className="absolute top-[25px] z-20 animate-bobble" style={{ left: '35%', transform: 'translateX(-80%)' }}>
+        <div className="absolute top-[35px] z-20 animate-bobble" style={{ left: '35%', transform: 'translateX(-80%)' }}>
           <img 
             src={RACCOON_HEAD} 
             alt="Raccoon Head" 
