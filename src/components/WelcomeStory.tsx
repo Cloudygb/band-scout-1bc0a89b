@@ -57,7 +57,7 @@ const WelcomeStory = () => {
                   src={RACCOON_EYES} 
                   alt="Raccoon Eyes" 
                   className="absolute" 
-                  style={{ width: '24px', height: 'auto', top: '42%', left: '58%', transform: 'translateX(-50%)' }}
+                  style={{ width: '32px', height: 'auto', top: '42%', left: '58%', transform: 'translateX(-50%)' }}
                 />
               </div>
             </div>
@@ -181,7 +181,7 @@ const WelcomeStory = () => {
                   src={RACCOON_EYES} 
                   alt="Raccoon Eyes" 
                   className="absolute" 
-                  style={{ width: '32px', height: 'auto', top: '30%', left: '50%', transform: 'translateX(-50%)' }}
+                  style={{ width: '40px', height: 'auto', top: '30%', left: '50%', transform: 'translateX(-50%)' }}
                 />
               </div>
             </div>
