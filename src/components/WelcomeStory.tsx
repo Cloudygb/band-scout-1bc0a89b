@@ -176,7 +176,7 @@ const WelcomeStory = () => {
             </h2>
             <div className="flex justify-center my-8 relative">
               <div className="relative" style={{ width: '160px', height: '160px' }}>
-                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-40 h-40 animate-bobble absolute" style={{ left: '50%', transform: 'translateX(-50%)' }} />
+                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '10%', transform: 'translateX(-50%)' }} />
                 <img 
                   src={RACCOON_EYES} 
                   alt="Raccoon Eyes" 
