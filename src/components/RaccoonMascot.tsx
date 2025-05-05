@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from "react";
 import { RACCOON_BODY, RACCOON_HEAD, RACCOON_EYES } from "@/assets";
 
@@ -35,6 +34,7 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const [currentQuote, setCurrentQuote] = useState("");
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const eyesRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const bubbleTimeoutRef = useRef<number | null>(null);
@@ -105,23 +105,33 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
       window.clearTimeout(bubbleTimeoutRef.current);
     }
 
-    // Get a new random quote different from the current one if possible
-    if (raccoonQuotes.length > 1) {
-      let newQuote;
-      do {
-        newQuote = getRandomQuote();
-      } while (newQuote === currentQuote && raccoonQuotes.length > 1);
-      setCurrentQuote(newQuote);
+    // If the bubble is already showing, cycle to a new quote
+    if (showBubble) {
+      // Get a new random quote different from the current one if possible
+      if (raccoonQuotes.length > 1) {
+        let newQuote;
+        do {
+          newQuote = getRandomQuote();
+        } while (newQuote === currentQuote && raccoonQuotes.length > 1);
+        setCurrentQuote(newQuote);
+      } else {
+        setCurrentQuote(getRandomQuote());
+      }
     } else {
+      // Otherwise, show the bubble with a new quote
       setCurrentQuote(getRandomQuote());
+      setShowBubble(true);
+      setIsFadingOut(false);
     }
-
-    // Show the bubble
-    setShowBubble(true);
 
     // Set timeout to hide bubble after 5 seconds
     bubbleTimeoutRef.current = window.setTimeout(() => {
-      setShowBubble(false);
+      setIsFadingOut(true);
+      // Wait for fade out animation to complete before hiding
+      setTimeout(() => {
+        setShowBubble(false);
+        setIsFadingOut(false);
+      }, 300); // Match the fadeOut animation duration
     }, 5000);
   };
   
@@ -171,7 +181,7 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
     >
       {/* Speech bubble */}
       {showBubble && (
-        <div className={`absolute z-40 ${getBubblePosition()} max-w-[200px] animate-fade-in`}>
+        <div className={`absolute z-40 ${getBubblePosition()} max-w-[200px] ${isFadingOut ? 'speech-bubble-disappear' : 'speech-bubble-appear'}`}>
           <div className="bg-white p-3 rounded-xl shadow-md relative">
             <p className="font-bubblegum text-sm text-bandit-brown-dark">{currentQuote}</p>
             <div className={`absolute h-0 w-0 ${getBubblePointerPosition()}`}></div>
