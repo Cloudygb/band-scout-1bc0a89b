@@ -13,11 +13,13 @@ import HowItWorks from "./pages/HowItWorks";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import BandProfileSetup from "./pages/BandProfileSetup";
+import ClientProfileSetup from "./pages/ClientProfileSetup";
 import BandsListing from "./pages/BandsListing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import BookingSuccess from "./components/BookingSuccess";
 import RaccoonMascot from "./components/RaccoonMascot";
+import Welcome from "./pages/Welcome";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +70,8 @@ const App = () => {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/band-profile-setup" element={<BandProfileSetup />} />
+                <Route path="/client-profile-setup" element={<ClientProfileSetup />} />
+                <Route path="/welcome" element={<Welcome />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/booking-success" element={<BookingSuccess />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

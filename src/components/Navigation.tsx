@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Music, CalendarClock, User, Sun, Moon, Download } from "lucide-react";
@@ -8,7 +7,7 @@ const Navigation = () => {
   const { theme, setTheme } = useTheme();
   
   return (
-    <header className="border-b bg-background sticky top-0 z-10">
+    <header className="border-b bg-background sticky top-0 z-50">
       <div className="container flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-2">
           <Music className="h-6 w-6 text-bandit-green" />

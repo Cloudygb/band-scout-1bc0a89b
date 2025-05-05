@@ -24,7 +24,7 @@ const SignUp = () => {
     e.preventDefault();
     console.log("Sign up form submitted");
     // This would be replaced with actual authentication logic
-    window.location.href = activeTab === "band" ? "/band-profile-setup" : "/client-dashboard";
+    window.location.href = activeTab === "band" ? "/band-profile-setup" : "/client-profile-setup";
   };
 
   return (
