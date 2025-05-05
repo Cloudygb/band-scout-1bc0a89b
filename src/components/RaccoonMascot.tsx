@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from "react";
 import { RACCOON_BODY, RACCOON_HEAD, RACCOON_EYES } from "@/assets";
 
@@ -147,15 +148,15 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
   const getBubblePosition = () => {
     switch (position) {
       case "top-right":
-        return "bottom-full right-0 mb-4";
+        return "bottom-full right-0 mb-4 mr-8 -translate-x-4";
       case "bottom-right":
-        return "top-0 right-0 mt-[-100px]";
+        return "bottom-[110%] right-0 mr-8 -translate-x-4"; // Anchor to bottom, 110% to ensure it's above the raccoon
       case "bottom-left":
-        return "top-0 left-0 mt-[-100px]";
+        return "bottom-[110%] left-0 ml-8 translate-x-4"; // Anchor to bottom, shift right a bit
       case "top-left":
-        return "bottom-full left-0 mb-4";
+        return "bottom-full left-0 mb-4 ml-8 translate-x-4";
       default:
-        return "top-0 right-0 mt-[-100px]";
+        return "bottom-[110%] right-0 mr-8 -translate-x-4";
     }
   };
 
@@ -164,12 +165,12 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
     switch (position) {
       case "top-right":
       case "top-left":
-        return "bottom-full left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-b-[10px] border-l-transparent border-r-transparent border-b-white";
+        return "bottom-[-8px] left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-white";
       case "bottom-right":
       case "bottom-left":
-        return "top-full left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-white";
+        return "bottom-[-8px] left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-white";
       default:
-        return "top-full left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-white";
+        return "bottom-[-8px] left-1/2 -translate-x-1/2 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-white";
     }
   };
   
