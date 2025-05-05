@@ -1,41 +1,13 @@
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { RACCOON_HEAD, RACCOON_EYES } from "@/assets";
-import { Music, Users, CalendarClock, Check, ArrowLeft } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-
-const raccoonResponses = [
-  "I only loot in major keys.",
-  "Breaking into hearts with nothing but vibes.",
-  "I don't steal songs—I liberate them.",
-  "Caught red-pawed… building your playlist.",
-  "Every banger deserves a getaway plan.",
-  "Sniffed out the groove. Left the door open.",
-  "Some gather nuts—I gather hidden gems.",
-  "I scale rooftops and octaves.",
-  "I crash genres like I crash trash cans.",
-  "Slick paws. Smoother transitions.",
-  "I only pull off clean getaways and cleaner beats.",
-  "Unmasking undiscovered artists—literally and figuratively.",
-  "The only thing I swipe is your attention.",
-  "I don't sneak in—I fade in.",
-  "Playlist full of treasures, and not a jewel in sight.",
-  "Just a masked critter with impeccable taste.",
-  "I burgle boredom and leave behind bops.",
-  "One paw in the underground. One paw on the aux.",
-  "It's not a heist—it's a rescue mission for forgotten tunes.",
-  "All I hoard is harmony."
-];
+import { Music, Users, CalendarClock, Check } from "lucide-react";
 
 const WelcomeStory = () => {
   // Always start with visible set to true for editing purposes
   const [isVisible, setIsVisible] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [currentResponseIndex, setCurrentResponseIndex] = useState(0);
-  const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   
   // Comment out the localStorage check for now
   // We'll keep the code structure so we can easily revert back later
@@ -59,26 +31,6 @@ const WelcomeStory = () => {
     }
   };
   
-  const handlePreviousStep = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-      setProgress(currentStep * 33.33);
-    }
-  };
-  
-  const handleRaccoonClick = () => {
-    setShowSpeechBubble(true);
-    // Cycle to next response
-    setCurrentResponseIndex((prevIndex) => 
-      prevIndex === raccoonResponses.length - 1 ? 0 : prevIndex + 1
-    );
-    
-    // Auto-hide speech bubble after 5 seconds
-    setTimeout(() => {
-      setShowSpeechBubble(false);
-    }, 5000);
-  };
-  
   if (!isVisible) return null;
   
   return (
@@ -100,28 +52,13 @@ const WelcomeStory = () => {
           <div className={`story-section ${currentStep === 0 ? 'active' : 'hidden'}`}>
             <div className="flex justify-center mb-4 relative">
               <div className="relative" style={{ width: '140px', height: '140px' }}>
-                <div 
-                  onClick={handleRaccoonClick} 
-                  className="cursor-pointer"
-                >
-                  <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '10%', transform: 'translateX(-50%)' }} />
-                  <img 
-                    src={RACCOON_EYES} 
-                    alt="Raccoon Eyes" 
-                    className="absolute" 
-                    style={{ width: '65px', height: 'auto', top: '33%', left: '55%', transform: 'translateX(-50%)' }}
-                  />
-                  
-                  {/* Speech Bubble */}
-                  {showSpeechBubble && (
-                    <div className="absolute speech-bubble bg-white p-3 rounded-lg shadow-md z-10 min-w-[180px] max-w-[220px]" style={{ top: '-40px', left: '90px', transform: 'translateX(-50%)' }}>
-                      <div className="font-bandit-speech text-bandit-brown-dark text-sm">
-                        {raccoonResponses[currentResponseIndex]}
-                      </div>
-                      <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-1 left-[calc(50%-8px)]"></div>
-                    </div>
-                  )}
-                </div>
+                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '10%', transform: 'translateX(-50%)' }} />
+                <img 
+                  src={RACCOON_EYES} 
+                  alt="Raccoon Eyes" 
+                  className="absolute" 
+                  style={{ width: '65px', height: 'auto', top: '33%', left: '55%', transform: 'translateX(-50%)' }}
+                />
               </div>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-center text-bandit-brown-dark mb-4">
@@ -132,13 +69,13 @@ const WelcomeStory = () => {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-bandit-muted p-4 rounded-lg text-center transition-colors duration-200 hover:bg-bandit-green/20">
+              <div className="bg-bandit-muted p-4 rounded-lg text-center">
                 <p className="font-medium text-bandit-brown-dark">Time Consuming</p>
               </div>
-              <div className="bg-bandit-muted p-4 rounded-lg text-center transition-colors duration-200 hover:bg-bandit-green/20">
+              <div className="bg-bandit-muted p-4 rounded-lg text-center">
                 <p className="font-medium text-bandit-brown-dark">Unreliable Options</p>
               </div>
-              <div className="bg-bandit-muted p-4 rounded-lg text-center transition-colors duration-200 hover:bg-bandit-green/20">
+              <div className="bg-bandit-muted p-4 rounded-lg text-center">
                 <p className="font-medium text-bandit-brown-dark">Price Uncertainty</p>
               </div>
             </div>
@@ -176,33 +113,6 @@ const WelcomeStory = () => {
                 </div>
                 <h3 className="font-semibold mb-2 text-bandit-brown-dark">Easy Booking</h3>
                 <p className="text-sm text-bandit-brown-dark">Secure your date with just a few clicks</p>
-              </div>
-            </div>
-            
-            <div className="flex justify-center mb-4 relative">
-              <div className="relative" style={{ width: '140px', height: '140px' }}>
-                <div 
-                  onClick={handleRaccoonClick} 
-                  className="cursor-pointer"
-                >
-                  <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '10%', transform: 'translateX(-50%)' }} />
-                  <img 
-                    src={RACCOON_EYES} 
-                    alt="Raccoon Eyes" 
-                    className="absolute" 
-                    style={{ width: '65px', height: 'auto', top: '33%', left: '55%', transform: 'translateX(-50%)' }}
-                  />
-                  
-                  {/* Speech Bubble */}
-                  {showSpeechBubble && (
-                    <div className="absolute speech-bubble bg-white p-3 rounded-lg shadow-md z-10 min-w-[180px] max-w-[220px]" style={{ top: '-40px', left: '90px', transform: 'translateX(-50%)' }}>
-                      <div className="font-bandit-speech text-bandit-brown-dark text-sm">
-                        {raccoonResponses[currentResponseIndex]}
-                      </div>
-                      <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-1 left-[calc(50%-8px)]"></div>
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
           </div>
@@ -257,33 +167,6 @@ const WelcomeStory = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="flex justify-center mt-8 relative">
-              <div className="relative" style={{ width: '140px', height: '140px' }}>
-                <div 
-                  onClick={handleRaccoonClick} 
-                  className="cursor-pointer"
-                >
-                  <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '10%', transform: 'translateX(-50%)' }} />
-                  <img 
-                    src={RACCOON_EYES} 
-                    alt="Raccoon Eyes" 
-                    className="absolute" 
-                    style={{ width: '65px', height: 'auto', top: '33%', left: '55%', transform: 'translateX(-50%)' }}
-                  />
-                  
-                  {/* Speech Bubble */}
-                  {showSpeechBubble && (
-                    <div className="absolute speech-bubble bg-white p-3 rounded-lg shadow-md z-10 min-w-[180px] max-w-[220px]" style={{ top: '-40px', left: '90px', transform: 'translateX(-50%)' }}>
-                      <div className="font-bandit-speech text-bandit-brown-dark text-sm">
-                        {raccoonResponses[currentResponseIndex]}
-                      </div>
-                      <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-1 left-[calc(50%-8px)]"></div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
           </div>
           
           {/* Step 4: Call to Action */}
@@ -293,28 +176,13 @@ const WelcomeStory = () => {
             </h2>
             <div className="flex justify-center my-8 relative">
               <div className="relative" style={{ width: '160px', height: '160px' }}>
-                <div 
-                  onClick={handleRaccoonClick} 
-                  className="cursor-pointer"
-                >
-                  <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '10%', transform: 'translateX(-50%)' }} />
-                  <img 
-                    src={RACCOON_EYES} 
-                    alt="Raccoon Eyes" 
-                    className="absolute" 
-                    style={{ width: '65px', height: 'auto', top: '28%', left: '50%', transform: 'translateX(-50%)' }}
-                  />
-                  
-                  {/* Speech Bubble */}
-                  {showSpeechBubble && (
-                    <div className="absolute speech-bubble bg-white p-3 rounded-lg shadow-md z-10 min-w-[180px] max-w-[220px]" style={{ top: '-40px', left: '90px', transform: 'translateX(-50%)' }}>
-                      <div className="font-bandit-speech text-bandit-brown-dark text-sm">
-                        {raccoonResponses[currentResponseIndex]}
-                      </div>
-                      <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-1 left-[calc(50%-8px)]"></div>
-                    </div>
-                  )}
-                </div>
+                <img src={RACCOON_HEAD} alt="Band-it Mascot" className="w-32 h-32 animate-bobble absolute" style={{ left: '10%', transform: 'translateX(-50%)' }} />
+                <img 
+                  src={RACCOON_EYES} 
+                  alt="Raccoon Eyes" 
+                  className="absolute" 
+                  style={{ width: '65px', height: 'auto', top: '28%', left: '50%', transform: 'translateX(-50%)' }}
+                />
               </div>
             </div>
             <div className="text-center">
@@ -330,21 +198,10 @@ const WelcomeStory = () => {
             </div>
           </div>
           
-          {/* Progress bar and navigation buttons */}
+          {/* Progress bar and next button */}
           <div className="mt-auto pt-8 w-full flex justify-between items-center">
             <div className="flex items-center gap-2">
-              {currentStep > 0 && (
-                <Button 
-                  onClick={handlePreviousStep}
-                  variant="outline"
-                  className="text-bandit-brown-dark"
-                  size="sm"
-                >
-                  <ArrowLeft className="mr-1 h-4 w-4" />
-                  Back
-                </Button>
-              )}
-              <span className="text-sm text-bandit-brown-dark ml-2">
+              <span className="text-sm text-bandit-brown-dark">
                 {currentStep + 1} of 4
               </span>
             </div>
