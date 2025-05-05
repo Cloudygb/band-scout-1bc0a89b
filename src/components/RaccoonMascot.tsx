@@ -87,7 +87,7 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
             />
             
             {/* Eyes layer - using fixed position relative to head */}
-            <div className="absolute" style={{ top: '36%', left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}>
+            <div className="absolute" style={{ top: '38%', left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}>
               <img 
                 ref={eyesRef}
                 src={RACCOON_EYES} 
