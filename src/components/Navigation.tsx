@@ -11,18 +11,18 @@ const Navigation = () => {
     <header className="border-b bg-background sticky top-0 z-10">
       <div className="container flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-2">
-          <Music className="h-6 w-6 text-music-teal" />
-          <span className="font-bold text-xl">Band Scout</span>
+          <Music className="h-6 w-6 text-bandit-green" />
+          <span className="font-bold text-xl">Band-it</span>
         </Link>
         
         <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/bands" className="text-foreground hover:text-music-teal transition-colors">
+          <Link to="/bands" className="text-foreground hover:text-bandit-green transition-colors">
             Find Bands
           </Link>
-          <Link to="/how-it-works" className="text-foreground hover:text-music-teal transition-colors">
+          <Link to="/how-it-works" className="text-foreground hover:text-bandit-green transition-colors">
             How It Works
           </Link>
-          <Link to="/about" className="text-foreground hover:text-music-teal transition-colors">
+          <Link to="/about" className="text-foreground hover:text-bandit-green transition-colors">
             About
           </Link>
         </nav>

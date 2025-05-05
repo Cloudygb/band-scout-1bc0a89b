@@ -5,23 +5,23 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 20%;
+    --background: 45 30% 98%;
+    --foreground: 30 30% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 30 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 30 30% 15%;
 
-    --primary: 171 70% 42%;
+    --primary: 84 20% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 45 30% 96%;
+    --secondary-foreground: 30 30% 15%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 45 15% 90%;
+    --muted-foreground: 30 10% 40%;
 
     --accent: 33 100% 50%;
     --accent-foreground: 0 0% 100%;
@@ -29,59 +29,59 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 171 70% 42%;
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 84 20% 56%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 171 70% 42%;
+    --sidebar-background: 44 30% 96%;
+    --sidebar-foreground: 30 30% 15%;
+    --sidebar-primary: 84 20% 56%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 0 0% 95%;
-    --sidebar-accent-foreground: 0 0% 20%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 171 70% 42%;
+    --sidebar-accent-foreground: 30 30% 15%;
+    --sidebar-border: 30 15% 85%;
+    --sidebar-ring: 84 20% 56%;
   }
 
   .dark {
-    --background: 0 0% 15%;
-    --foreground: 0 0% 95%;
+    --background: 30 15% 12%;
+    --foreground: 40 10% 95%;
 
-    --card: 0 0% 20%;
-    --card-foreground: 0 0% 95%;
+    --card: 30 10% 18%;
+    --card-foreground: 40 10% 95%;
 
-    --popover: 0 0% 20%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 30 10% 18%;
+    --popover-foreground: 40 10% 95%;
 
-    --primary: 171 70% 42%;
+    --primary: 84 20% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 25%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 30 10% 22%;
+    --secondary-foreground: 40 10% 95%;
 
-    --muted: 0 0% 25%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 30 10% 22%;
+    --muted-foreground: 40 5% 70%;
 
-    --accent: 33 100% 50%;
+    --accent: 33 90% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 30%;
-    --input: 0 0% 30%;
-    --ring: 171 70% 42%;
+    --border: 30 15% 28%;
+    --input: 30 15% 28%;
+    --ring: 84 20% 50%;
     
-    --sidebar-background: 0 0% 20%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 171 70% 42%;
+    --sidebar-background: 30 10% 18%;
+    --sidebar-foreground: 40 10% 95%;
+    --sidebar-primary: 84 20% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 25%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 0 0% 30%;
-    --sidebar-ring: 171 70% 42%;
+    --sidebar-accent: 30 10% 22%;
+    --sidebar-accent-foreground: 40 10% 95%;
+    --sidebar-border: 30 15% 28%;
+    --sidebar-ring: 84 20% 50%;
   }
 }
 
@@ -105,5 +105,91 @@
 }
 
 .audio-player {
-  @apply rounded-md p-2 flex items-center space-x-2 bg-music-teal/10;
+  @apply rounded-md p-2 flex items-center space-x-2 bg-bandit-green/10;
+}
+
+/* Parallax layers */
+.parallax-wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 1px;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-layer-back {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer-base {
+  transform: translateZ(0);
+}
+
+.parallax-layer-front {
+  transform: translateZ(0.5px) scale(0.5);
+}
+
+/* Raccoon mascot-specific styles */
+.raccoon-container {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* First-time visitor story modal */
+.story-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-content {
+  background: linear-gradient(to bottom, #f5efe0, #e9e0d1);
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+}
+
+.story-section {
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.story-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-progress {
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.story-progress-bar {
+  height: 100%;
+  background-color: #7D9054;
+  width: 0;
+  transition: width 0.3s ease;
 }

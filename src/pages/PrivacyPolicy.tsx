@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -6,13 +5,13 @@ const PrivacyPolicy = () => {
   return (
     <div className="container mx-auto py-12 px-4 mb-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-2">Band Scout Privacy Policy</h1>
+        <h1 className="text-4xl font-bold mb-2">Band-it Privacy Policy</h1>
         <p className="text-muted-foreground mb-8">Effective Date: April 29, 2025</p>
 
         <div className="prose prose-lg max-w-none">
           <h2 className="text-2xl font-semibold mt-8 mb-4">Introduction</h2>
           <p>
-            Band Scout (the "Platform"), operated by its parent company Whiskey River Studios ("we," "us," or "our"), 
+            Band-it (the "Platform"), operated by its parent company Whiskey River Studios ("we," "us," or "our"), 
             is a musician-finding service connecting clients with musicians and bands. We are committed to 
             protecting your privacy and ensuring we handle your personal information in a lawful and transparent manner. 
             This Privacy Policy describes the information we collect from our users, how we use and share it, and your 
@@ -20,14 +19,14 @@ const PrivacyPolicy = () => {
             Consumer Privacy Act (CCPA), to safeguard your data.
           </p>
           <p>
-            By using Band Scout, you consent to the collection and use of your information as outlined in this policy. 
+            By using Band-it, you consent to the collection and use of your information as outlined in this policy. 
             If you do not agree with these practices, please do not use the Platform. If you have any questions or 
             concerns about our Privacy Policy, you can contact us using the information provided at the end of this document.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Information We Collect from General Users (Clients)</h2>
           <p>
-            When you sign up or use Band Scout as a client seeking to find and book musicians or bands, we collect 
+            When you sign up or use Band-it as a client seeking to find and book musicians or bands, we collect 
             a minimal amount of personal information necessary to provide and secure our services. This includes:
           </p>
           <ul className="list-disc pl-6 space-y-2 my-4">
@@ -58,7 +57,7 @@ const PrivacyPolicy = () => {
               For example, we may show you bands or events near the city or region you provide.
             </li>
             <li>
-              We may send you promotional or newsletter emails about Band Scout (such as updates or offers), 
+              We may send you promotional or newsletter emails about Band-it (such as updates or offers), 
               but only if you explicitly opt-in to receive them. You can unsubscribe from these at any time.
             </li>
             <li>
@@ -69,7 +68,7 @@ const PrivacyPolicy = () => {
           
           <p>
             We do not sell the personal information of general users, and we do not share it with third parties for 
-            marketing or any purposes unrelated to providing the Band Scout service. We also do not use your personal 
+            marketing or any purposes unrelated to providing the Band-it service. We also do not use your personal 
             data for profiling or advertising. The information collected from you as a client is kept private and used 
             strictly as described above. The only time we might use it beyond these purposes is if required for password 
             recovery assistance or if you request a specific service that involves using your information (such as 
@@ -78,7 +77,7 @@ const PrivacyPolicy = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Information We Collect from Bands and Musicians</h2>
           <p>
-            If you register on Band Scout as a band or musician to offer your services, we collect a broader range 
+            If you register on Band-it as a band or musician to offer your services, we collect a broader range 
             of information to build your public profile and facilitate connections with clients. This information, 
             typically provided by you, may include:
           </p>
@@ -110,7 +109,7 @@ const PrivacyPolicy = () => {
             </li>
             <li>
               <strong>Account and Payment Information:</strong> We record information related to gigs booked through 
-              Band Scout, such as the date and fee of each gig. Band Scout takes a 5% commission from each completed booking. 
+              Band-it, such as the date and fee of each gig. Band-it takes a 5% commission from each completed booking. 
               Payment processing details (e.g., bank account or payment service information for receiving payouts) are handled 
               securely by our external payment processor (see Third-Party Services below).
             </li>
@@ -124,7 +123,7 @@ const PrivacyPolicy = () => {
           <ul className="list-disc pl-6 space-y-2 my-4">
             <li>
               Your profile information (band name, bio, genre, service area, pricing, etc.) and any media/content you 
-              provide are displayed on Band Scout for general users to view. This allows clients to discover your act and 
+              provide are displayed on Band-it for general users to view. This allows clients to discover your act and 
               reach out to book performances.
             </li>
             <li>
@@ -146,9 +145,9 @@ const PrivacyPolicy = () => {
               aggregate form.
             </li>
             <li>
-              <strong>No Ownership of Content:</strong> Band Scout does not claim any ownership rights over the music, recordings, 
+              <strong>No Ownership of Content:</strong> Band-it does not claim any ownership rights over the music, recordings, 
               images, or other content you provide to us. You retain all copyright and ownership of your content. By submitting 
-              content to Band Scout, you grant us a license to use, reproduce, and display that content on our Platform for the 
+              content to Band-it, you grant us a license to use, reproduce, and display that content on our Platform for the 
               purpose of promoting your band and connecting you with clients. This license ends when you remove the content or 
               delete your account. We will never sell your music or creative content, and it remains yours to use as you wish 
               outside our Platform.
@@ -157,7 +156,7 @@ const PrivacyPolicy = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Cookies and Tracking Technologies</h2>
           <p>
-            Band Scout uses cookies and similar tracking technologies to provide and enhance our services. Cookies are 
+            Band-it uses cookies and similar tracking technologies to provide and enhance our services. Cookies are 
             small text files placed on your device that help our website function properly and remember your preferences. 
             Here is how we use them:
           </p>
@@ -184,7 +183,7 @@ const PrivacyPolicy = () => {
               This improves site speed and reliability.
             </li>
             <li>
-              <strong>Analytics:</strong> We use basic analytics tools to understand how users interact with Band Scout (for example, 
+              <strong>Analytics:</strong> We use basic analytics tools to understand how users interact with Band-it (for example, 
               which band profiles are most viewed or how users navigate the site). These analytics may use their own cookies to 
               distinguish repeat visits. The information collected through analytics cookies is generally statistical and not 
               personally identifying. For instance, we might track that a particular band's page was visited 100 times in a month, 
@@ -196,20 +195,20 @@ const PrivacyPolicy = () => {
           <p>
             Most web browsers automatically accept cookies, but you have the option to disable or remove cookies through your 
             browser settings. However, please note that if you disable essential cookies (like session cookies), certain features 
-            of Band Scout may not function properly – for example, you might not remain logged in or some location-based features 
+            of Band-it may not function properly – for example, you might not remain logged in or some location-based features 
             may be unavailable. We do not use cookies for advertising purposes or to track you across other websites.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Third-Party Services and Data Sharing</h2>
           <p>
-            To run the Band Scout Platform efficiently, we rely on a few trusted third-party services. Whenever we share data with 
+            To run the Band-it Platform efficiently, we rely on a few trusted third-party services. Whenever we share data with 
             these service providers, it is only to the extent necessary for them to perform their functions, and they are 
             contractually obligated to protect your information and use it only for the purposes we specify. The key third-party 
             partners we work with include:
           </p>
           <ul className="list-disc pl-6 space-y-2 my-4">
             <li>
-              <strong>Website Hosting and Data Storage:</strong> Band Scout is hosted on robust infrastructure provided by Amazon Web 
+              <strong>Website Hosting and Data Storage:</strong> Band-it is hosted on robust infrastructure provided by Amazon Web 
               Services (AWS). All your data, including personal information and uploaded content, is stored on secure AWS servers in 
               the United States. AWS implements high security standards to safeguard data, and we in turn apply our own encryption 
               and access controls on top of their services.
@@ -220,13 +219,13 @@ const PrivacyPolicy = () => {
               views, how users are finding bands, and what features are most popular. The analytics provider may collect information 
               such as your browser type, device, pages visited, and time spent, but this information is used in aggregate form for 
               statistics. We do not receive personal details like your name or email from analytics, only aggregated data. The analytics 
-              data helps us improve Band Scout's features and user experience.
+              data helps us improve Band-it's features and user experience.
             </li>
             <li>
               <strong>Payment Processing:</strong> All payments for bookings (such as when a client pays a band for a gig through our 
               Platform) are handled by a certified third-party payment processor (e.g., Stripe, PayPal, or a similar payment service). 
               When you enter credit card information or bank details, you are actually interacting with our payment partner's secure 
-              system, which is compliant with PCI-DSS (the Payment Card Industry Data Security Standard). Band Scout itself does not 
+              system, which is compliant with PCI-DSS (the Payment Card Industry Data Security Standard). Band-it itself does not 
               store your sensitive payment details (like full credit card numbers). The payment processor will share with us only the 
               information needed to record and complete the transaction – for example, confirmation that a payment was made, the amount, 
               and to attribute the payment to the correct user(s) (client and band). Our payment partner may have its own privacy policy 
@@ -242,7 +241,7 @@ const PrivacyPolicy = () => {
           
           <p className="font-semibold mt-4">No Sale of Personal Data:</p>
           <p>
-            Band Scout does not sell personal information to third parties. "Selling" in this context means sharing personal data with 
+            Band-it does not sell personal information to third parties. "Selling" in this context means sharing personal data with 
             third parties for monetary or other valuable consideration, as defined by laws like CCPA. We also do not share your personal 
             information with third parties for their independent marketing or advertising purposes.
           </p>
@@ -258,7 +257,7 @@ const PrivacyPolicy = () => {
             </li>
             <li>
               <strong>With service providers:</strong> As detailed above, we share information with vendors who perform necessary 
-              operations for Band Scout (hosting, analytics, payment, communications). They process data only under our instructions 
+              operations for Band-it (hosting, analytics, payment, communications). They process data only under our instructions 
               and for our purposes.
             </li>
             <li>
@@ -269,7 +268,7 @@ const PrivacyPolicy = () => {
               or authorities if a user is engaged in harmful or illegal activities on the Platform.
             </li>
             <li>
-              <strong>Business transfers:</strong> In the event that Band Scout or Whiskey River Studios is involved in a merger, 
+              <strong>Business transfers:</strong> In the event that Band-it or Whiskey River Studios is involved in a merger, 
               acquisition, reorganization, or sale of assets, your information may be transferred to the successor entity as part of 
               that transaction. If such a transfer occurs, we will ensure that your personal information remains subject to the protections 
               of this Privacy Policy (unless you are notified otherwise and consent to a new policy).
@@ -278,7 +277,7 @@ const PrivacyPolicy = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Data Security</h2>
           <p>
-            We take the security of your personal information seriously. Band Scout implements a variety of security measures to protect 
+            We take the security of your personal information seriously. Band-it implements a variety of security measures to protect 
             data from unauthorized access, alteration, disclosure, or destruction:
           </p>
           <ul className="list-disc pl-6 space-y-2 my-4">
@@ -352,12 +351,12 @@ const PrivacyPolicy = () => {
             Once deleted, your data (aside from possible minimal records required for legal compliance) cannot be recovered. Keep in mind that if 
             you delete your band account, your profile will no longer be visible to clients and you will not be able to recover your content or 
             booking history through the Platform. If you are a client and delete your account, you will lose access to any saved preferences or 
-            booking records on Band Scout.
+            booking records on Band-it.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Your Privacy Rights</h2>
           <p>
-            Band Scout respects your rights to control your personal information. Depending on where you live, these rights may include:
+            Band-it respects your rights to control your personal information. Depending on where you live, these rights may include:
           </p>
           <ul className="list-disc pl-6 space-y-2 my-4">
             <li>
@@ -392,7 +391,7 @@ const PrivacyPolicy = () => {
             </li>
             <li>
               <strong>Right to Opt-Out of Sale:</strong> You have the right to opt out of the sale of your personal information. As noted, 
-              Band Scout does not sell personal data, so we do not engage in any data sales that you would need to opt out of. We treat browser 
+              Band-it does not sell personal data, so we do not engage in any data sales that you would need to opt out of. We treat browser 
               signals such as the Global Privacy Control (GPC) as opt-out requests if applicable.
             </li>
             <li>
@@ -404,7 +403,7 @@ const PrivacyPolicy = () => {
           
           <p className="font-semibold mt-4">Opt-Out of Marketing:</p>
           <p>
-            Even outside of California-specific rights, all users of Band Scout can choose to opt out of receiving promotional emails from us. 
+            Even outside of California-specific rights, all users of Band-it can choose to opt out of receiving promotional emails from us. 
             You can do this by not opting in to begin with, or by unsubscribing via the link in any promotional email. Service-related 
             communications (like booking confirmations or policy updates) are not considered promotional and may still be sent as needed to 
             operate the service.
@@ -420,15 +419,15 @@ const PrivacyPolicy = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Children's Privacy and Content Guidelines</h2>
           <p>
-            Band Scout is intended for users aged 16 and older. We do not knowingly collect personal information from anyone under the age of 16. 
+            Band-it is intended for users aged 16 and older. We do not knowingly collect personal information from anyone under the age of 16. 
             If you are under 16, you are not permitted to create an account or use the Platform. Parents or guardians who become aware that a 
             child under 16 has created an account should contact us immediately so we can remove the child's information.
           </p>
           
           <p>
-            For teenagers who are 16 or 17 years old, we advise using Band Scout with caution and ideally under parental guidance. While we welcome 
+            For teenagers who are 16 or 17 years old, we advise using Band-it with caution and ideally under parental guidance. While we welcome 
             musicians and fans of music of all ages over 16, users should be aware that the Platform may contain uncensored musical content. 
-            This means that some music, band names, or descriptions could include explicit lyrics or mature themes. Band Scout does not typically 
+            This means that some music, band names, or descriptions could include explicit lyrics or mature themes. Band-it does not typically 
             censor or filter the audio content or language that artists choose to share, as we aim to allow creative expression.
           </p>
           
@@ -452,7 +451,7 @@ const PrivacyPolicy = () => {
           </ul>
           
           <p>
-            By using Band Scout, you affirm that you are at least 16 years old. If we learn that we have collected personal information from a 
+            By using Band-it, you affirm that you are at least 16 years old. If we learn that we have collected personal information from a 
             user under 16, we will take prompt steps to delete that information from our records.
           </p>
 
@@ -465,7 +464,7 @@ const PrivacyPolicy = () => {
           
           <p>
             We encourage you to review this Privacy Policy periodically to stay informed about how we are protecting your information. If you 
-            continue to use Band Scout after a Privacy Policy update, it signifies your acceptance of the revised terms. If you do not agree with 
+            continue to use Band-it after a Privacy Policy update, it signifies your acceptance of the revised terms. If you do not agree with 
             any changes to the policy, you should stop using the Platform and, if applicable, delete your account or contact us to remove your data.
           </p>
 
@@ -478,13 +477,13 @@ const PrivacyPolicy = () => {
           <p className="font-semibold mt-4">Contact Methods:</p>
           <ul className="list-disc pl-6 space-y-2 my-4">
             <li>
-              <strong>Email:</strong> privacy@whiskeyriverstudios.com (Please include "Band Scout Privacy" in the subject line for faster routing.)
+              <strong>Email:</strong> privacy@whiskeyriverstudios.com (Please include "Band-it Privacy" in the subject line for faster routing.)
             </li>
             <li>
               <strong>Mailing Address:</strong> Whiskey River Studios, Attn: Privacy Department, 1234 Music Avenue, Austin, TX 78701, USA
             </li>
             <li>
-              <strong>Online Contact Form:</strong> You may also reach out to us through the contact form on our website at Band Scout Contact Page 
+              <strong>Online Contact Form:</strong> You may also reach out to us through the contact form on our website at Band-it Contact Page 
               (if available).
             </li>
           </ul>
@@ -495,7 +494,7 @@ const PrivacyPolicy = () => {
           </p>
           
           <p className="mt-8">
-            Thank you for trusting Band Scout with your musical journey. We value your privacy and are committed to safeguarding your personal 
+            Thank you for trusting Band-it with your musical journey. We value your privacy and are committed to safeguarding your personal 
             information.
           </p>
           

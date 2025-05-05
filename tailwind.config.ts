@@ -63,13 +63,23 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				music: {
-					teal: '#1ABC9C',
-					'light-teal': '#3DD8B9',
-					orange: '#FF6F00',
-					'light-orange': '#FF9E40',
-					dark: '#333333',
-					light: '#FFFFFF',
+				// New mascot-inspired color palette
+				bandit: {
+					green: {
+						light: '#9FAF73',
+						DEFAULT: '#7D9054',
+						dark: '#6E7F48'
+					},
+					brown: {
+						light: '#BF925F',
+						DEFAULT: '#A37B4F',
+						dark: '#58382A'
+					},
+					tan: '#E5D0B1',
+					cream: '#F5EFE0',
+					// Additional complementary colors
+					accent: '#D46C4E', // A rusty orange/red for accents
+					muted: '#E9E0D1', // A soft beige for subtle backgrounds
 				}
 			},
 			borderRadius: {
@@ -113,6 +123,21 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
+				},
+				'bobble': {
+					'0%, 100%': { transform: 'rotate(-2deg)' },
+					'50%': { transform: 'rotate(2deg)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' }
+				},
+				'wander': {
+					'0%': { transform: 'translate(0, 0)' },
+					'25%': { transform: 'translate(2px, 2px)' },
+					'50%': { transform: 'translate(0, 4px)' },
+					'75%': { transform: 'translate(-2px, 2px)' },
+					'100%': { transform: 'translate(0, 0)' }
 				}
 			},
 			animation: {
@@ -120,6 +145,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
 				'scale-in': 'scale-in 0.2s ease-out',
+				'bobble': 'bobble 3s ease-in-out infinite',
+				'float': 'float 4s ease-in-out infinite',
+				'wander': 'wander 5s ease-in-out infinite',
 			}
 		}
 	},
