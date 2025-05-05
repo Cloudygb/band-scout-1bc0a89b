@@ -141,20 +141,44 @@
   cursor: pointer;
 }
 
-/* Welcome page styles */
-.welcome-section {
+/* First-time visitor story modal */
+.story-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-content {
+  background: linear-gradient(to bottom, #f5efe0, #e9e0d1);
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+}
+
+.story-section {
   padding: 2rem;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.welcome-section.active {
+.story-section.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-.welcome-progress {
+.story-progress {
   height: 4px;
   background-color: rgba(0, 0, 0, 0.1);
   position: absolute;
@@ -163,7 +187,7 @@
   right: 0;
 }
 
-.welcome-progress-bar {
+.story-progress-bar {
   height: 100%;
   background-color: #7D9054;
   width: 0;
