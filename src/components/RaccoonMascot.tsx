@@ -78,7 +78,7 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
         />
         
         {/* Head layer - using fixed pixel values instead of percentages */}
-        <div className="absolute" style={{ top: '15px', left: '30px', zIndex: 20 }}>
+        <div className="absolute" style={{ top: '15px', left: '25px', zIndex: 20 }}>
           <div className="animate-bobble">
             <img 
               src={RACCOON_HEAD} 
