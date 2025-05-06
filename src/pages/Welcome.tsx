@@ -84,27 +84,25 @@ const Welcome = () => {
     <div ref={pageRef} className="overflow-x-hidden h-[400vh] relative">
       {/* Parallax container */}
       <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
-        {/* Sky/Clouds Layer - moves slowest */}
+        {/* Sky/Clouds Layer - animated from right to left */}
         <div 
-          className="absolute top-0 left-0 w-[200%] h-full bg-sky-200" 
+          className="absolute top-0 left-0 w-[200%] h-full" 
           style={{ 
             backgroundImage: `url('/images/clouds.png')`,
-            backgroundSize: "contain",
-            backgroundRepeat: "repeat-x",
-            transform: `translateX(-${scrollPosition * 20}%)`,
-            zIndex: 1
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            zIndex: 1,
+            animation: "cloudScroll 60s linear infinite"
           }}
         />
         
         {/* Mountains Layer */}
         <div 
-          className="absolute w-full h-full"
+          className="absolute bottom-0 left-0 w-full h-[60%]"
           style={{ 
             backgroundImage: `url('/images/mountains.png')`,
             backgroundSize: "cover",
             backgroundPosition: "bottom",
-            backgroundRepeat: "repeat-x",
-            bottom: `-${10 + scrollPosition * 20}%`,
             transform: `translateY(${scrollPosition * 30}%)`,
             zIndex: 2
           }}
@@ -112,13 +110,11 @@ const Welcome = () => {
         
         {/* Trees Layer */}
         <div 
-          className="absolute w-full h-full"
+          className="absolute bottom-0 left-0 w-full h-[40%]"
           style={{ 
             backgroundImage: `url('/images/trees.png')`,
             backgroundSize: "cover",
             backgroundPosition: "bottom",
-            backgroundRepeat: "repeat-x",
-            bottom: `-${20 + scrollPosition * 30}%`,
             transform: `translateY(${scrollPosition * 50}%)`,
             zIndex: 3
           }}
@@ -126,13 +122,11 @@ const Welcome = () => {
         
         {/* Fence Layer - moves fastest */}
         <div 
-          className="absolute w-full h-1/2"
+          className="absolute bottom-0 left-0 w-full h-[20%]"
           style={{ 
             backgroundImage: `url('/images/fence.png')`,
             backgroundSize: "cover",
             backgroundPosition: "bottom",
-            backgroundRepeat: "repeat-x",
-            bottom: `-${30 + scrollPosition * 40}%`,
             transform: `translateY(${scrollPosition * 70}%)`,
             zIndex: 4
           }}

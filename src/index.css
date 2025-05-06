@@ -95,6 +95,16 @@
   }
 }
 
+/* Cloud animation for the welcome page */
+@keyframes cloudScroll {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: -100% center;
+  }
+}
+
 .band-card {
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
