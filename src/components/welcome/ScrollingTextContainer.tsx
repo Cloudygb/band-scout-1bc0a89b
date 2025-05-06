@@ -21,19 +21,25 @@ const ScrollingTextContainer: React.FC<ScrollingTextContainerProps> = ({
   const calculateOpacity = () => {
     const { appearPosition, disappearPosition } = textSection;
     
+    // Total range for this section
+    const totalRange = disappearPosition - appearPosition;
+    
+    // Reserve 50% of the total range for full opacity (in the middle)
+    const fadeInEnd = appearPosition + totalRange * 0.25; // First 25% of the range is for fading in
+    const fadeOutStart = disappearPosition - totalRange * 0.25; // Last 25% of the range is for fading out
+    
     if (scrollPosition < appearPosition) {
       return 0; // Not yet visible
     } else if (scrollPosition > disappearPosition) {
       return 0; // No longer visible
+    } else if (scrollPosition >= fadeInEnd && scrollPosition <= fadeOutStart) {
+      return 1; // Full opacity in the middle ~50% of the range
+    } else if (scrollPosition < fadeInEnd) {
+      // Fade in during the first 25% of the range
+      return (scrollPosition - appearPosition) / (fadeInEnd - appearPosition);
     } else {
-      // Fade in during the first half of the range
-      if (scrollPosition < (appearPosition + disappearPosition) / 2) {
-        return (scrollPosition - appearPosition) / ((disappearPosition - appearPosition) / 2);
-      } 
-      // Fade out during the second half of the range
-      else {
-        return 1 - (scrollPosition - (appearPosition + disappearPosition) / 2) / ((disappearPosition - appearPosition) / 2);
-      }
+      // Fade out during the last 25% of the range
+      return 1 - (scrollPosition - fadeOutStart) / (disappearPosition - fadeOutStart);
     }
   };
 
