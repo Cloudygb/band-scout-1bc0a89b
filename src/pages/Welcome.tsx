@@ -63,7 +63,7 @@ const Welcome = () => {
           }
         });
         
-        // Show final modal and raccoon when reaching the bottom
+        // Show final modal when reaching the bottom
         if (scrollPercentage > 0.8) {
           setShowFinalModal(true);
         }
@@ -74,7 +74,7 @@ const Welcome = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [infoSections]);
   
-  // Handle the "Continue to Home" button click
+  // Handle the "Go to Home Page" button click
   const handleContinue = () => {
     localStorage.setItem("hasVisitedBefore", "true");
     navigate("/");
@@ -101,10 +101,10 @@ const Welcome = () => {
           className="absolute bottom-0 left-0 w-full h-[60%]"
           style={{ 
             backgroundImage: `url('${MOUNTAINS_IMAGE}')`,
-            backgroundSize: "contain",
-            backgroundRepeat: "repeat-x",
-            backgroundPosition: "bottom",
-            transform: `translateY(${scrollPosition * 30}%)`,
+            backgroundSize: "cover",
+            backgroundPosition: "bottom center",
+            backgroundRepeat: "no-repeat",
+            transform: `translateY(${Math.max(0, 100 - scrollPosition * 1500)}%)`, // Mountains appear first
             zIndex: 2
           }}
         />
@@ -114,23 +114,23 @@ const Welcome = () => {
           className="absolute bottom-0 left-0 w-full h-[40%]"
           style={{ 
             backgroundImage: `url('${TREES_IMAGE}')`,
-            backgroundSize: "contain",
-            backgroundRepeat: "repeat-x",
-            backgroundPosition: "bottom",
-            transform: `translateY(${scrollPosition * 50}%)`,
+            backgroundSize: "cover",
+            backgroundPosition: "bottom center",
+            backgroundRepeat: "no-repeat",
+            transform: `translateY(${Math.max(0, 100 - scrollPosition * 1000)}%)`, // Trees appear second
             zIndex: 3
           }}
         />
         
-        {/* Fence Layer - moves fastest */}
+        {/* Fence Layer */}
         <div 
           className="absolute bottom-0 left-0 w-full h-[20%]"
           style={{ 
             backgroundImage: `url('${FENCE_IMAGE}')`,
-            backgroundSize: "contain",
-            backgroundRepeat: "repeat-x",
-            backgroundPosition: "bottom",
-            transform: `translateY(${scrollPosition * 70}%)`,
+            backgroundSize: "cover",
+            backgroundPosition: "bottom center",
+            backgroundRepeat: "no-repeat",
+            transform: `translateY(${Math.max(0, 100 - scrollPosition * 500)}%)`, // Fence appears last
             zIndex: 4
           }}
         />
@@ -172,19 +172,16 @@ const Welcome = () => {
                   {section.description}
                 </DialogDescription>
               </DialogHeader>
-              <div className="flex justify-between">
-                <Button variant="outline" onClick={handleContinue}>
-                  Skip to Home
-                </Button>
-                <Button variant="outline" onClick={() => setActiveModal(null)}>
-                  Continue Scrolling
+              <div className="flex justify-end">
+                <Button onClick={() => setActiveModal(null)}>
+                  Continue
                 </Button>
               </div>
             </DialogContent>
           </Dialog>
         ))}
         
-        {/* Final section with raccoon and button */}
+        {/* Final section with Go to Home button */}
         {showFinalModal && (
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/20 to-transparent p-8 z-20 flex flex-col items-center">
             <div className="animate-bounce mb-4">
@@ -204,7 +201,7 @@ const Welcome = () => {
               className="animate-pulse mt-4"
               size="lg"
             >
-              Get Started <ArrowRight className="ml-2" />
+              Go to Home Page <ArrowRight className="ml-2" />
             </Button>
           </div>
         )}
