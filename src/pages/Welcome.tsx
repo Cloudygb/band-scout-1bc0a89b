@@ -104,7 +104,7 @@ const Welcome = () => {
             backgroundSize: "cover",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${Math.max(0, 100 - scrollPosition * 1500)}%)`, // Mountains appear first
+            transform: `translateY(${scrollPosition * 200}%)`, // Slowest movement - 15px per "second"
             zIndex: 2
           }}
         />
@@ -117,7 +117,7 @@ const Welcome = () => {
             backgroundSize: "cover",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${Math.max(0, 100 - scrollPosition * 1000)}%)`, // Trees appear second
+            transform: `translateY(${scrollPosition * 300}%)`, // Medium movement - 10px per "second"
             zIndex: 3
           }}
         />
@@ -130,7 +130,7 @@ const Welcome = () => {
             backgroundSize: "cover",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${Math.max(0, 100 - scrollPosition * 500)}%)`, // Fence appears last
+            transform: `translateY(${scrollPosition * 400}%)`, // Fastest movement - 5px per "second"
             zIndex: 4
           }}
         />
