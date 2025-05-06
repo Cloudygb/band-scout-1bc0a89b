@@ -8,7 +8,7 @@ const CloudsLayer: React.FC = () => {
       className="absolute top-0 left-0 w-full h-full" 
       style={{ 
         backgroundImage: `url('${CLOUDS_IMAGE}')`,
-        backgroundSize: "auto", // Smaller size to make pattern visible
+        backgroundSize: "1500px auto", // Smaller size to make pattern visible
         backgroundPosition: "center",
         backgroundRepeat: "repeat-x", // Horizontal repeat only
         zIndex: 1,
