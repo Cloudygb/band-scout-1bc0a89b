@@ -18,17 +18,17 @@ const Welcome = () => {
     {
       title: "Find Your Perfect Band",
       description: "Band-it connects venues and event planners with talented musicians. No more endless searching or unreliable bookings!",
-      triggerPosition: 0.2, // Show when page is scrolled 20%
+      triggerPosition: 0.15, // Show when page is scrolled 15%
     },
     {
       title: "Easy Booking Process",
       description: "Browse bands by genre, location, and availability. Compare pricing and packages in one place.",
-      triggerPosition: 0.4, // Show when page is scrolled 40%
+      triggerPosition: 0.35, // Show when page is scrolled 35%
     },
     {
       title: "Reliable Performance",
       description: "All bands are vetted for quality and reliability. Read reviews from other clients before booking.",
-      triggerPosition: 0.6, // Show when page is scrolled 60%
+      triggerPosition: 0.55, // Show when page is scrolled 55%
     }
   ];
 
@@ -58,13 +58,13 @@ const Welcome = () => {
         // Determine which modal to show based on scroll position
         infoSections.forEach((section, index) => {
           if (scrollPercentage >= section.triggerPosition && 
-              scrollPercentage < (index < infoSections.length - 1 ? infoSections[index + 1].triggerPosition : 0.8)) {
+              scrollPercentage < (index < infoSections.length - 1 ? infoSections[index + 1].triggerPosition : 0.7)) {
             setActiveModal(index);
           }
         });
         
-        // Show final modal when reaching the bottom
-        if (scrollPercentage > 0.8) {
+        // Show final modal when reaching near the bottom, but not too soon
+        if (scrollPercentage > 0.85) {
           setShowFinalModal(true);
         }
       }
@@ -81,7 +81,7 @@ const Welcome = () => {
   };
 
   return (
-    <div ref={pageRef} className="overflow-x-hidden h-[400vh] relative">
+    <div ref={pageRef} className="overflow-x-hidden h-[800vh] relative">
       {/* Parallax container */}
       <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
         {/* Sky/Clouds Layer - animated from right to left */}
@@ -89,7 +89,7 @@ const Welcome = () => {
           className="absolute top-0 left-0 w-[200%] h-full bg-sky-100" 
           style={{ 
             backgroundImage: `url('${CLOUDS_IMAGE}')`,
-            backgroundSize: "cover",
+            backgroundSize: "auto",
             backgroundPosition: "center",
             backgroundRepeat: "repeat-x",
             zIndex: 1,
@@ -106,7 +106,7 @@ const Welcome = () => {
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
             height: "60vh",
-            transform: `translateY(${Math.min(1, (1 - scrollPosition * 3)) * 100}%)`,
+            transform: `translateY(${Math.min(1, (1 - scrollPosition * 0.8)) * 100}%)`,
             zIndex: 2,
             transition: "transform 0.1s ease-out"
           }}
@@ -121,7 +121,7 @@ const Welcome = () => {
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
             height: "40vh",
-            transform: `translateY(${Math.min(1, (1 - scrollPosition * 2)) * 100}%)`,
+            transform: `translateY(${Math.min(1, (1 - scrollPosition * 0.5)) * 100}%)`,
             zIndex: 3,
             transition: "transform 0.1s ease-out"
           }}
@@ -136,7 +136,7 @@ const Welcome = () => {
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
             height: "20vh",
-            transform: `translateY(${Math.min(1, (1 - scrollPosition)) * 100}%)`,
+            transform: `translateY(${Math.min(1, (1 - scrollPosition * 0.3)) * 100}%)`,
             zIndex: 4,
             transition: "transform 0.1s ease-out"
           }}
