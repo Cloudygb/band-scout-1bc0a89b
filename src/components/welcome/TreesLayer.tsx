@@ -15,10 +15,10 @@ const TreesLayer: React.FC<TreesLayerProps> = ({ scrollPosition }) => {
       className="absolute bottom-0 left-0 w-full" 
       style={{ 
         backgroundImage: `url('${TREES_IMAGE}')`,
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         backgroundPosition: "bottom center",
         backgroundRepeat: "no-repeat",
-        height: "40vh",
+        height: "100vh",
         opacity,
         zIndex: 3,
       }}
