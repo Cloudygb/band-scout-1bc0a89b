@@ -18,14 +18,16 @@ const MountainsLayer: React.FC<MountainsLayerProps> = ({ scrollPosition }) => {
   
   return (
     <div 
-      className="fixed bottom-0 left-0 w-full h-screen transition-transform duration-300" 
+      className="fixed bottom-0 left-0 w-full pointer-events-none" 
       style={{ 
         backgroundImage: `url('${MOUNTAINS_IMAGE}')`,
-        backgroundSize: "cover",
+        backgroundSize: "100% auto",
         backgroundPosition: "bottom center",
         backgroundRepeat: "no-repeat",
+        height: "auto",
         transform: `translateY(${calculateTranslateY()})`,
         zIndex: 2,
+        minHeight: "100vh",
       }}
     />
   );

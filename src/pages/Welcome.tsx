@@ -61,10 +61,12 @@ const Welcome = () => {
           }
         });
         
-        // Show final modal ONLY when reaching very near the bottom (95%)
-        // This ensures all images are fully visible before showing the final modal
-        if (scrollPercentage > 0.95) {
+        // Show final modal ONLY when reaching the very bottom (98+%)
+        // This ensures all images are fully visible and user has scrolled all the way down
+        if (scrollPercentage > 0.98) {
           setShowFinalModal(true);
+        } else {
+          setShowFinalModal(false);
         }
       }
     };
@@ -81,7 +83,7 @@ const Welcome = () => {
 
   return (
     <div ref={pageRef} className="overflow-x-hidden h-[500vh] relative">
-      {/* Increased height to 500vh to match the pseudocode and allow for proper scrolling */}
+      {/* Increased height to 500vh to allow for proper scrolling */}
       <ParallaxContainer 
         scrollPosition={scrollPosition}
         showFinalModal={showFinalModal}
