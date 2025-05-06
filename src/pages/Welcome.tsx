@@ -20,20 +20,20 @@ const Welcome = () => {
   // Text sections that appear and disappear as user scrolls
   const textSections: TextSection[] = [
     {
-      title: "Find Your Perfect Band",
-      description: "Band-it connects venues and event planners with talented musicians. No more endless searching or unreliable bookings!",
+      title: "The Great Band Hunt",
+      description: "Once upon a midnight gig, an event planner was drowning in flyers and endless phone tags. Every band search felt like chasing a unicorn in the fog. Then I uncovered Band-It — a magic treasure map that connects you to top musicians nearby. No more wild goose chases! Sign up on Band-It and let the music find you.",
       appearPosition: 0.25, // Start appearing earlier at 25%
       disappearPosition: 0.42, // Disappear by 42%
     },
     {
-      title: "Easy Booking Process",
-      description: "Browse bands by genre, location, and availability. Compare pricing and packages in one place.",
+      title: "Taming the Schedule Circus",
+      description: "In a planner's lair, calendars were bursting and panic was high. Two bands booked for the same slot — pure madness! Then I whipped out Band-It — in a blink you can filter bands by date, venue, genre, even budget. Voilà, no more juggling gigs. Sign up now and let Band-It play stage manager for you.",
       appearPosition: 0.50, // Start appearing at 50%
       disappearPosition: 0.67, // Disappear by 67%
     },
     {
-      title: "Reliable Performance",
-      description: "All bands are vetted for quality and reliability. Read reviews from other clients before booking.",
+      title: "The Grand Finale Guarantee",
+      description: "One hour before showtime, I found a planner pacing behind the curtains. \"Will the band show—or bomb?\" the planner wondered. No sweat—Band-It is here: every act on our site is vetted and rated by real event pros. Trust me, you'll never book a dud. Sign up now and let Band-It make your event a hit!",
       appearPosition: 0.75, // Start appearing at 75%
       disappearPosition: 0.92, // Disappear by 92%
     }

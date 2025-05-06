@@ -54,12 +54,12 @@ const ScrollingTextContainer: React.FC<ScrollingTextContainerProps> = ({
 
   return (
     <div 
-      className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-xl w-full text-center px-4 z-20 pointer-events-none"
+      className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-3xl w-full text-center px-6 z-20 pointer-events-none"
       style={{ opacity }}
     >
       <div className="bg-background/80 backdrop-blur-sm p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-primary mb-2">{textSection.title}</h2>
-        <p className="text-lg">{textSection.description}</p>
+        <h2 className="text-3xl font-bold text-primary mb-3">{textSection.title}</h2>
+        <p className="text-base md:text-lg leading-relaxed">{textSection.description}</p>
       </div>
     </div>
   );
