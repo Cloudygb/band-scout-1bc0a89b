@@ -2,31 +2,40 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ParallaxContainer from "@/components/welcome/ParallaxContainer";
-import InfoModal, { InfoSection } from "@/components/welcome/InfoModal";
+import ScrollingTextContainer from "@/components/welcome/ScrollingTextContainer";
+
+interface TextSection {
+  title: string;
+  description: string;
+  appearPosition: number;
+  disappearPosition: number;
+}
 
 const Welcome = () => {
   const navigate = useNavigate();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showFinalModal, setShowFinalModal] = useState(false);
-  const [activeModal, setActiveModal] = useState<number | null>(null);
   const pageRef = useRef<HTMLDivElement>(null);
   
-  // Info sections for the modals that appear as user scrolls
-  const infoSections: InfoSection[] = [
+  // Text sections that appear and disappear as user scrolls
+  const textSections: TextSection[] = [
     {
       title: "Find Your Perfect Band",
       description: "Band-it connects venues and event planners with talented musicians. No more endless searching or unreliable bookings!",
-      triggerPosition: 0.25, // Show when page is scrolled 25%
+      appearPosition: 0.30, // Start appearing at 30%
+      disappearPosition: 0.40, // Disappear by 40%
     },
     {
       title: "Easy Booking Process",
       description: "Browse bands by genre, location, and availability. Compare pricing and packages in one place.",
-      triggerPosition: 0.50, // Show when page is scrolled 50%
+      appearPosition: 0.55, // Start appearing at 55%
+      disappearPosition: 0.65, // Disappear by 65%
     },
     {
       title: "Reliable Performance",
       description: "All bands are vetted for quality and reliability. Read reviews from other clients before booking.",
-      triggerPosition: 0.75, // Show when page is scrolled 75%
+      appearPosition: 0.80, // Start appearing at 80%
+      disappearPosition: 0.90, // Disappear by 90%
     }
   ];
 
@@ -42,7 +51,7 @@ const Welcome = () => {
     };
   }, []);
 
-  // Handle scroll events for parallax and showing modals
+  // Handle scroll events for parallax and showing text sections
   useEffect(() => {
     const handleScroll = () => {
       if (pageRef.current) {
@@ -52,14 +61,6 @@ const Welcome = () => {
         const scrollPercentage = scrollTop / (documentHeight - windowHeight);
         
         setScrollPosition(scrollPercentage);
-        
-        // Determine which modal to show based on scroll position
-        infoSections.forEach((section, index) => {
-          if (scrollPercentage >= section.triggerPosition && 
-              scrollPercentage < (index < infoSections.length - 1 ? infoSections[index + 1].triggerPosition : 0.95)) {
-            setActiveModal(index);
-          }
-        });
         
         // Show final modal ONLY when reaching the very bottom (98+%)
         // This ensures all images are fully visible and user has scrolled all the way down
@@ -73,7 +74,7 @@ const Welcome = () => {
     
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [infoSections]);
+  }, []);
   
   // Handle the "Go to Home Page" button click
   const handleContinue = () => {
@@ -90,13 +91,12 @@ const Welcome = () => {
         handleContinue={handleContinue}
       />
       
-      {/* Information modals that appear while scrolling */}
-      {infoSections.map((section, index) => (
-        <InfoModal
+      {/* Text sections that appear and fade while scrolling */}
+      {textSections.map((section, index) => (
+        <ScrollingTextContainer
           key={index}
-          infoSection={section}
-          isOpen={activeModal === index}
-          onClose={() => setActiveModal(null)}
+          textSection={section}
+          scrollPosition={scrollPosition}
         />
       ))}
     </div>
