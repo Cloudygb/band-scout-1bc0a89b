@@ -1,10 +1,8 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowRight } from "lucide-react";
-import { CLOUDS_IMAGE, FENCE_IMAGE, MOUNTAINS_IMAGE, TREES_IMAGE } from "@/assets/parallaxImages";
+import ParallaxContainer from "@/components/welcome/ParallaxContainer";
+import InfoModal, { InfoSection } from "@/components/welcome/InfoModal";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -14,7 +12,7 @@ const Welcome = () => {
   const pageRef = useRef<HTMLDivElement>(null);
   
   // Info sections for the modals that appear as user scrolls
-  const infoSections = [
+  const infoSections: InfoSection[] = [
     {
       title: "Find Your Perfect Band",
       description: "Band-it connects venues and event planners with talented musicians. No more endless searching or unreliable bookings!",
@@ -32,7 +30,7 @@ const Welcome = () => {
     }
   ];
 
-  // Only initialize the page
+  // Initialize the page
   useEffect(() => {
     document.body.style.overflow = "hidden"; // Prevent scrolling initially
     setTimeout(() => {
@@ -82,138 +80,23 @@ const Welcome = () => {
   };
 
   return (
-    <div ref={pageRef} className="overflow-x-hidden h-[1200vh] relative">
-      {/* Parallax container */}
-      <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
-        {/* Sky/Clouds Layer - animated from right to left */}
-        <div 
-          className="absolute top-0 left-0 w-[200%] h-full bg-sky-100" 
-          style={{ 
-            backgroundImage: `url('${CLOUDS_IMAGE}')`,
-            backgroundSize: "auto",
-            backgroundPosition: "center",
-            backgroundRepeat: "repeat-x",
-            zIndex: 1,
-            animation: "cloudScroll 60s linear infinite"
-          }}
+    <div ref={pageRef} className="overflow-x-hidden h-[2000vh] relative">
+      {/* Parallax container with all layers */}
+      <ParallaxContainer 
+        scrollPosition={scrollPosition}
+        showFinalModal={showFinalModal}
+        handleContinue={handleContinue}
+      />
+      
+      {/* Information modals that appear while scrolling */}
+      {infoSections.map((section, index) => (
+        <InfoModal
+          key={index}
+          infoSection={section}
+          isOpen={activeModal === index}
+          onClose={() => setActiveModal(null)}
         />
-        
-        {/* Mountains Layer - appears first */}
-        <div 
-          className="absolute bottom-0 left-0 w-full" 
-          style={{ 
-            backgroundImage: `url('${MOUNTAINS_IMAGE}')`,
-            backgroundSize: "contain",
-            backgroundPosition: "bottom center",
-            backgroundRepeat: "no-repeat",
-            height: "60vh",
-            transform: `translateY(${Math.min(200, Math.max(0, (1 - scrollPosition * 0.25) * 200))}%)`,
-            zIndex: 2,
-            transition: "transform 0.1s ease-out"
-          }}
-        />
-        
-        {/* Trees Layer - appears after mountains */}
-        <div 
-          className="absolute bottom-0 left-0 w-full" 
-          style={{ 
-            backgroundImage: `url('${TREES_IMAGE}')`,
-            backgroundSize: "contain",
-            backgroundPosition: "bottom center",
-            backgroundRepeat: "no-repeat",
-            height: "40vh",
-            transform: `translateY(${Math.min(200, Math.max(0, (1 - (scrollPosition - 0.2) * 0.25) * 200))}%)`,
-            zIndex: 3,
-            transition: "transform 0.1s ease-out"
-          }}
-        />
-        
-        {/* Fence Layer - appears last */}
-        <div 
-          className="absolute bottom-0 left-0 w-full" 
-          style={{ 
-            backgroundImage: `url('${FENCE_IMAGE}')`,
-            backgroundSize: "contain",
-            backgroundPosition: "bottom center",
-            backgroundRepeat: "no-repeat",
-            height: "20vh",
-            transform: `translateY(${Math.min(200, Math.max(0, (1 - (scrollPosition - 0.4) * 0.25) * 200))}%)`,
-            zIndex: 4,
-            transition: "transform 0.1s ease-out"
-          }}
-        />
-        
-        {/* Title text that fades as user scrolls */}
-        <div 
-          className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none"
-          style={{ opacity: Math.max(0, 1 - scrollPosition * 5) }}
-        >
-          <h1 className="text-5xl md:text-7xl font-bold text-primary drop-shadow-lg mb-4">
-            Welcome to Band-it
-          </h1>
-          <p className="text-xl md:text-2xl text-foreground drop-shadow-md max-w-2xl text-center px-4">
-            Scroll down to discover how we can help you find the perfect band for your next event
-          </p>
-          <div className="flex flex-col mt-12 gap-4 items-center">
-            <div className="animate-bounce text-foreground">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-              </svg>
-            </div>
-            <Button 
-              onClick={handleContinue}
-              className="pointer-events-auto"
-              variant="secondary"
-            >
-              Skip to Home <ArrowRight className="ml-2" />
-            </Button>
-          </div>
-        </div>
-        
-        {/* Information modals that appear while scrolling */}
-        {infoSections.map((section, index) => (
-          <Dialog key={index} open={activeModal === index} onOpenChange={() => setActiveModal(null)}>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle>{section.title}</DialogTitle>
-                <DialogDescription>
-                  {section.description}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="flex justify-end">
-                <Button onClick={() => setActiveModal(null)}>
-                  Continue
-                </Button>
-              </div>
-            </DialogContent>
-          </Dialog>
-        ))}
-        
-        {/* Final section with Go to Home button - only appears after all images are fully visible */}
-        {showFinalModal && (
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/20 to-transparent p-8 z-20 flex flex-col items-center">
-            <div className="animate-bounce mb-4">
-              <div className="relative">
-                <img 
-                  src="/lovable-uploads/04e8d05e-ecd0-4b2d-b616-f3261ce37016.png" 
-                  alt="Raccoon mascot" 
-                  className="w-24 h-auto"
-                />
-                <div className="absolute top-0 right-0 bg-white p-2 rounded-full rounded-bl-none">
-                  <p className="text-sm font-medium">Ready to rock?</p>
-                </div>
-              </div>
-            </div>
-            <Button 
-              onClick={handleContinue}
-              className="animate-pulse mt-4"
-              size="lg"
-            >
-              Go to Home Page <ArrowRight className="ml-2" />
-            </Button>
-          </div>
-        )}
-      </div>
+      ))}
     </div>
   );
 };
