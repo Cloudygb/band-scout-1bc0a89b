@@ -27,7 +27,7 @@ const TreesLayer: React.FC<TreesLayerProps> = ({ scrollPosition }) => {
         height: "auto",
         transform: `translateY(${calculateTranslateY()})`,
         zIndex: 3,
-        minHeight: "100vh",
+        minHeight: "120vh",
       }}
     />
   );
