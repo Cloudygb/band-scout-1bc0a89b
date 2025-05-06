@@ -22,20 +22,20 @@ const Welcome = () => {
     {
       title: "Find Your Perfect Band",
       description: "Band-it connects venues and event planners with talented musicians. No more endless searching or unreliable bookings!",
-      appearPosition: 0.30, // Start appearing at 30%
-      disappearPosition: 0.40, // Disappear by 40%
+      appearPosition: 0.25, // Start appearing earlier at 25%
+      disappearPosition: 0.42, // Disappear by 42%
     },
     {
       title: "Easy Booking Process",
       description: "Browse bands by genre, location, and availability. Compare pricing and packages in one place.",
-      appearPosition: 0.55, // Start appearing at 55%
-      disappearPosition: 0.65, // Disappear by 65%
+      appearPosition: 0.50, // Start appearing at 50%
+      disappearPosition: 0.67, // Disappear by 67%
     },
     {
       title: "Reliable Performance",
       description: "All bands are vetted for quality and reliability. Read reviews from other clients before booking.",
-      appearPosition: 0.80, // Start appearing at 80%
-      disappearPosition: 0.90, // Disappear by 90%
+      appearPosition: 0.75, // Start appearing at 75%
+      disappearPosition: 0.92, // Disappear by 92%
     }
   ];
 
