@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ArrowRight } from "lucide-react";
+import { CLOUDS_IMAGE, FENCE_IMAGE, MOUNTAINS_IMAGE, TREES_IMAGE } from "@/assets/parallaxImages";
 
 const Welcome = () => {
   const navigate = useNavigate();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showFinalModal, setShowFinalModal] = useState(false);
-  // Remove the automatic redirection for users who have visited before
   const [activeModal, setActiveModal] = useState<number | null>(null);
   const pageRef = useRef<HTMLDivElement>(null);
   
@@ -32,7 +32,7 @@ const Welcome = () => {
     }
   ];
 
-  // Only initialize the page - removed the redirect logic
+  // Only initialize the page
   useEffect(() => {
     document.body.style.overflow = "hidden"; // Prevent scrolling initially
     setTimeout(() => {
@@ -86,11 +86,11 @@ const Welcome = () => {
       <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
         {/* Sky/Clouds Layer - animated from right to left */}
         <div 
-          className="absolute top-0 left-0 w-[200%] h-full" 
+          className="absolute top-0 left-0 w-[200%] h-full bg-sky-100" 
           style={{ 
-            backgroundImage: `url('/images/clouds.png')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundImage: `url('${CLOUDS_IMAGE}')`,
+            backgroundSize: "contain",
+            backgroundRepeat: "repeat-x",
             zIndex: 1,
             animation: "cloudScroll 60s linear infinite"
           }}
@@ -100,8 +100,9 @@ const Welcome = () => {
         <div 
           className="absolute bottom-0 left-0 w-full h-[60%]"
           style={{ 
-            backgroundImage: `url('/images/mountains.png')`,
-            backgroundSize: "cover",
+            backgroundImage: `url('${MOUNTAINS_IMAGE}')`,
+            backgroundSize: "contain",
+            backgroundRepeat: "repeat-x",
             backgroundPosition: "bottom",
             transform: `translateY(${scrollPosition * 30}%)`,
             zIndex: 2
@@ -112,8 +113,9 @@ const Welcome = () => {
         <div 
           className="absolute bottom-0 left-0 w-full h-[40%]"
           style={{ 
-            backgroundImage: `url('/images/trees.png')`,
-            backgroundSize: "cover",
+            backgroundImage: `url('${TREES_IMAGE}')`,
+            backgroundSize: "contain",
+            backgroundRepeat: "repeat-x",
             backgroundPosition: "bottom",
             transform: `translateY(${scrollPosition * 50}%)`,
             zIndex: 3
@@ -124,8 +126,9 @@ const Welcome = () => {
         <div 
           className="absolute bottom-0 left-0 w-full h-[20%]"
           style={{ 
-            backgroundImage: `url('/images/fence.png')`,
-            backgroundSize: "cover",
+            backgroundImage: `url('${FENCE_IMAGE}')`,
+            backgroundSize: "contain",
+            backgroundRepeat: "repeat-x",
             backgroundPosition: "bottom",
             transform: `translateY(${scrollPosition * 70}%)`,
             zIndex: 4
