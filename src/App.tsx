@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { AuthProvider } from "./context/AuthContext";
 import { useState, useEffect } from "react";
@@ -26,6 +26,13 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [position, setPosition] = useState<"top-right" | "bottom-right" | "bottom-left" | "top-left">("bottom-right");
+  const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
+  
+  // Check if user has visited before and hide raccoon on welcome page
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("hasVisitedBefore");
+    setHasVisitedBefore(!!hasVisited);
+  }, []);
   
   // Change raccoon position based on route
   useEffect(() => {
@@ -62,9 +69,11 @@ const App = () => {
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              <RaccoonMascot position={position} />
+              {/* Only show raccoon if not on welcome page */}
+              {window.location.pathname !== "/welcome" && <RaccoonMascot position={position} />}
               <Routes>
-                <Route path="/" element={<Layout />}>
+                {/* Show welcome page as entry point for first-time visitors */}
+                <Route path="/" element={!hasVisitedBefore ? <Navigate to="/welcome" /> : <Layout />}>
                   <Route index element={<Index />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/how-it-works" element={<HowItWorks />} />
@@ -78,6 +87,8 @@ const App = () => {
                   <Route path="/booking-success" element={<BookingSuccess />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 </Route>
+                {/* Welcome page without Layout wrapper */}
+                <Route path="/welcome" element={<Welcome />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
