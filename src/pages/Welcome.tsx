@@ -9,7 +9,7 @@ const Welcome = () => {
   const navigate = useNavigate();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showFinalModal, setShowFinalModal] = useState(false);
-  const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
+  // Remove the automatic redirection for users who have visited before
   const [activeModal, setActiveModal] = useState<number | null>(null);
   const pageRef = useRef<HTMLDivElement>(null);
   
@@ -32,23 +32,17 @@ const Welcome = () => {
     }
   ];
 
-  // Check if user has visited the site before
+  // Only initialize the page - removed the redirect logic
   useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisitedBefore");
-    if (hasVisited) {
-      setHasVisitedBefore(true);
-      navigate("/");
-    } else {
-      document.body.style.overflow = "hidden"; // Prevent scrolling initially
-      setTimeout(() => {
-        document.body.style.overflow = "auto"; // Enable scrolling after a brief intro moment
-      }, 1500);
-    }
+    document.body.style.overflow = "hidden"; // Prevent scrolling initially
+    setTimeout(() => {
+      document.body.style.overflow = "auto"; // Enable scrolling after a brief intro moment
+    }, 1500);
     
     return () => {
       document.body.style.overflow = "auto"; // Ensure scrolling is restored on unmount
     };
-  }, [navigate]);
+  }, []);
 
   // Handle scroll events for parallax and showing modals
   useEffect(() => {
@@ -85,11 +79,6 @@ const Welcome = () => {
     localStorage.setItem("hasVisitedBefore", "true");
     navigate("/");
   };
-  
-  // If user has visited before, redirect to home page
-  if (hasVisitedBefore) {
-    return null;
-  }
 
   return (
     <div ref={pageRef} className="overflow-x-hidden h-[400vh] relative">

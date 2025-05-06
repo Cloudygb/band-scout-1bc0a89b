@@ -28,7 +28,7 @@ const App = () => {
   const [position, setPosition] = useState<"top-right" | "bottom-right" | "bottom-left" | "top-left">("bottom-right");
   const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
   
-  // Check if user has visited before and hide raccoon on welcome page
+  // Check if user has visited before
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisitedBefore");
     setHasVisitedBefore(!!hasVisited);
@@ -72,7 +72,7 @@ const App = () => {
               {/* Only show raccoon if not on welcome page */}
               {window.location.pathname !== "/welcome" && <RaccoonMascot position={position} />}
               <Routes>
-                {/* Welcome page is its own standalone route */}
+                {/* Welcome page is always accessible directly */}
                 <Route path="/welcome" element={<Welcome />} />
                 
                 {/* Root path - redirect to welcome if first visit, otherwise show home */}
