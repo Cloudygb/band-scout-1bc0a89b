@@ -86,12 +86,12 @@ const Welcome = () => {
       <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
         {/* Sky/Clouds Layer - animated from right to left */}
         <div 
-          className="absolute top-0 left-0 w-full h-full bg-sky-100" 
+          className="absolute top-0 left-0 w-[200%] h-full bg-sky-100" 
           style={{ 
             backgroundImage: `url('${CLOUDS_IMAGE}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
+            backgroundRepeat: "repeat-x",
             zIndex: 1,
             animation: "cloudScroll 60s linear infinite"
           }}
@@ -99,13 +99,14 @@ const Welcome = () => {
         
         {/* Mountains Layer */}
         <div 
-          className="absolute bottom-0 left-0 w-full h-[60%]"
+          className="absolute bottom-0 left-0 w-full" 
           style={{ 
             backgroundImage: `url('${MOUNTAINS_IMAGE}')`,
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${(1 - scrollPosition * 3) * 100}%)`, // Mountains come in first
+            height: "60vh",
+            transform: `translateY(${Math.min(1, (1 - scrollPosition * 3)) * 100}%)`,
             zIndex: 2,
             transition: "transform 0.1s ease-out"
           }}
@@ -113,13 +114,14 @@ const Welcome = () => {
         
         {/* Trees Layer */}
         <div 
-          className="absolute bottom-0 left-0 w-full h-[40%]"
+          className="absolute bottom-0 left-0 w-full" 
           style={{ 
             backgroundImage: `url('${TREES_IMAGE}')`,
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${(1 - scrollPosition * 2) * 100}%)`, // Trees come in second
+            height: "40vh",
+            transform: `translateY(${Math.min(1, (1 - scrollPosition * 2)) * 100}%)`,
             zIndex: 3,
             transition: "transform 0.1s ease-out"
           }}
@@ -127,13 +129,14 @@ const Welcome = () => {
         
         {/* Fence Layer */}
         <div 
-          className="absolute bottom-0 left-0 w-full h-[20%]"
+          className="absolute bottom-0 left-0 w-full" 
           style={{ 
             backgroundImage: `url('${FENCE_IMAGE}')`,
-            backgroundSize: "cover",
+            backgroundSize: "contain",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${(1 - scrollPosition) * 100}%)`, // Fence comes in last
+            height: "20vh",
+            transform: `translateY(${Math.min(1, (1 - scrollPosition)) * 100}%)`,
             zIndex: 4,
             transition: "transform 0.1s ease-out"
           }}
