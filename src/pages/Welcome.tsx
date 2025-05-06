@@ -86,11 +86,12 @@ const Welcome = () => {
       <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
         {/* Sky/Clouds Layer - animated from right to left */}
         <div 
-          className="absolute top-0 left-0 w-[200%] h-full bg-sky-100" 
+          className="absolute top-0 left-0 w-full h-full bg-sky-100" 
           style={{ 
             backgroundImage: `url('${CLOUDS_IMAGE}')`,
-            backgroundSize: "contain",
-            backgroundRepeat: "repeat-x",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
             zIndex: 1,
             animation: "cloudScroll 60s linear infinite"
           }}
@@ -104,8 +105,9 @@ const Welcome = () => {
             backgroundSize: "cover",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${scrollPosition * 200}%)`, // Slowest movement - 15px per "second"
-            zIndex: 2
+            transform: `translateY(${(1 - scrollPosition * 3) * 100}%)`, // Mountains come in first
+            zIndex: 2,
+            transition: "transform 0.1s ease-out"
           }}
         />
         
@@ -117,8 +119,9 @@ const Welcome = () => {
             backgroundSize: "cover",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${scrollPosition * 300}%)`, // Medium movement - 10px per "second"
-            zIndex: 3
+            transform: `translateY(${(1 - scrollPosition * 2) * 100}%)`, // Trees come in second
+            zIndex: 3,
+            transition: "transform 0.1s ease-out"
           }}
         />
         
@@ -130,8 +133,9 @@ const Welcome = () => {
             backgroundSize: "cover",
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
-            transform: `translateY(${scrollPosition * 400}%)`, // Fastest movement - 5px per "second"
-            zIndex: 4
+            transform: `translateY(${(1 - scrollPosition) * 100}%)`, // Fence comes in last
+            zIndex: 4,
+            transition: "transform 0.1s ease-out"
           }}
         />
         
