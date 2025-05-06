@@ -20,7 +20,7 @@ const ParallaxContainer: React.FC<ParallaxContainerProps> = ({
 }) => {
   return (
     <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
-      {/* Sky/Clouds Layer */}
+      {/* Sky/Clouds Layer - fixed in the background */}
       <CloudsLayer />
       
       {/* Mountains Layer - appears first */}

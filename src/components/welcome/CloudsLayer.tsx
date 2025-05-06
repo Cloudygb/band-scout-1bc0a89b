@@ -5,14 +5,14 @@ import { CLOUDS_IMAGE } from "@/assets/parallaxImages";
 const CloudsLayer: React.FC = () => {
   return (
     <div 
-      className="absolute top-0 left-0 w-full h-full" 
+      className="fixed top-0 left-0 w-full h-screen" 
       style={{ 
         backgroundImage: `url('${CLOUDS_IMAGE}')`,
-        backgroundSize: "1500px auto", // Smaller size to make pattern visible
+        backgroundSize: "1500px auto",
         backgroundPosition: "center",
-        backgroundRepeat: "repeat-x", // Horizontal repeat only
+        backgroundRepeat: "repeat-x",
+        animation: "cloudScroll 60s linear infinite",
         zIndex: 1,
-        animation: "cloudScroll 60s linear infinite"
       }}
     />
   );

@@ -80,8 +80,8 @@ const Welcome = () => {
   };
 
   return (
-    <div ref={pageRef} className="overflow-x-hidden h-[5000vh] relative">
-      {/* Parallax container with all layers */}
+    <div ref={pageRef} className="overflow-x-hidden h-[500vh] relative">
+      {/* Increased height to 500vh to match the pseudocode and allow for proper scrolling */}
       <ParallaxContainer 
         scrollPosition={scrollPosition}
         showFinalModal={showFinalModal}
