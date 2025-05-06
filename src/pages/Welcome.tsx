@@ -18,17 +18,17 @@ const Welcome = () => {
     {
       title: "Find Your Perfect Band",
       description: "Band-it connects venues and event planners with talented musicians. No more endless searching or unreliable bookings!",
-      triggerPosition: 0.15, // Show when page is scrolled 15%
+      triggerPosition: 0.25, // Show when page is scrolled 25%
     },
     {
       title: "Easy Booking Process",
       description: "Browse bands by genre, location, and availability. Compare pricing and packages in one place.",
-      triggerPosition: 0.35, // Show when page is scrolled 35%
+      triggerPosition: 0.45, // Show when page is scrolled 45%
     },
     {
       title: "Reliable Performance",
       description: "All bands are vetted for quality and reliability. Read reviews from other clients before booking.",
-      triggerPosition: 0.55, // Show when page is scrolled 55%
+      triggerPosition: 0.65, // Show when page is scrolled 65%
     }
   ];
 
@@ -58,13 +58,14 @@ const Welcome = () => {
         // Determine which modal to show based on scroll position
         infoSections.forEach((section, index) => {
           if (scrollPercentage >= section.triggerPosition && 
-              scrollPercentage < (index < infoSections.length - 1 ? infoSections[index + 1].triggerPosition : 0.7)) {
+              scrollPercentage < (index < infoSections.length - 1 ? infoSections[index + 1].triggerPosition : 0.8)) {
             setActiveModal(index);
           }
         });
         
-        // Show final modal when reaching near the bottom, but not too soon
-        if (scrollPercentage > 0.85) {
+        // Show final modal ONLY when reaching very near the bottom (95%)
+        // This ensures all images are fully visible before showing the final modal
+        if (scrollPercentage > 0.95) {
           setShowFinalModal(true);
         }
       }
@@ -81,7 +82,7 @@ const Welcome = () => {
   };
 
   return (
-    <div ref={pageRef} className="overflow-x-hidden h-[800vh] relative">
+    <div ref={pageRef} className="overflow-x-hidden h-[1200vh] relative">
       {/* Parallax container */}
       <div className="fixed top-0 left-0 w-full h-screen overflow-hidden">
         {/* Sky/Clouds Layer - animated from right to left */}
@@ -97,7 +98,7 @@ const Welcome = () => {
           }}
         />
         
-        {/* Mountains Layer */}
+        {/* Mountains Layer - appears first */}
         <div 
           className="absolute bottom-0 left-0 w-full" 
           style={{ 
@@ -106,13 +107,13 @@ const Welcome = () => {
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
             height: "60vh",
-            transform: `translateY(${Math.min(1, (1 - scrollPosition * 0.8)) * 100}%)`,
+            transform: `translateY(${Math.min(200, Math.max(0, (1 - scrollPosition * 0.25) * 200))}%)`,
             zIndex: 2,
             transition: "transform 0.1s ease-out"
           }}
         />
         
-        {/* Trees Layer */}
+        {/* Trees Layer - appears after mountains */}
         <div 
           className="absolute bottom-0 left-0 w-full" 
           style={{ 
@@ -121,13 +122,13 @@ const Welcome = () => {
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
             height: "40vh",
-            transform: `translateY(${Math.min(1, (1 - scrollPosition * 0.5)) * 100}%)`,
+            transform: `translateY(${Math.min(200, Math.max(0, (1 - (scrollPosition - 0.2) * 0.25) * 200))}%)`,
             zIndex: 3,
             transition: "transform 0.1s ease-out"
           }}
         />
         
-        {/* Fence Layer */}
+        {/* Fence Layer - appears last */}
         <div 
           className="absolute bottom-0 left-0 w-full" 
           style={{ 
@@ -136,7 +137,7 @@ const Welcome = () => {
             backgroundPosition: "bottom center",
             backgroundRepeat: "no-repeat",
             height: "20vh",
-            transform: `translateY(${Math.min(1, (1 - scrollPosition * 0.3)) * 100}%)`,
+            transform: `translateY(${Math.min(200, Math.max(0, (1 - (scrollPosition - 0.4) * 0.25) * 200))}%)`,
             zIndex: 4,
             transition: "transform 0.1s ease-out"
           }}
@@ -188,7 +189,7 @@ const Welcome = () => {
           </Dialog>
         ))}
         
-        {/* Final section with Go to Home button */}
+        {/* Final section with Go to Home button - only appears after all images are fully visible */}
         {showFinalModal && (
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/20 to-transparent p-8 z-20 flex flex-col items-center">
             <div className="animate-bounce mb-4">
