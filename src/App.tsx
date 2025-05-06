@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { AuthProvider } from "./context/AuthContext";
 import { useState, useEffect } from "react";
@@ -24,41 +24,41 @@ import Welcome from "./pages/Welcome";
 
 const queryClient = new QueryClient();
 
-const App = () => {
+// Separate component to handle raccoon position based on routes
+const RaccoonHandler = () => {
   const [position, setPosition] = useState<"top-right" | "bottom-right" | "bottom-left" | "top-left">("bottom-right");
+  const location = useLocation();
+  
+  // Change raccoon position based on route
+  useEffect(() => {
+    const path = location.pathname;
+    
+    if (path === "/") {
+      setPosition("bottom-right");
+    } else if (path.includes("/bands")) {
+      setPosition("top-right");
+    } else if (path.includes("/signup") || path.includes("/login")) {
+      setPosition("bottom-left");
+    } else {
+      setPosition("bottom-right");
+    }
+  }, [location]);
+  
+  // Only show raccoon if not on welcome page
+  if (location.pathname === "/welcome") {
+    return null;
+  }
+  
+  return <RaccoonMascot position={position} />;
+};
+
+const App = () => {
   const [hasVisitedBefore, setHasVisitedBefore] = useState(false);
   
   // Check if user has visited before
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisitedBefore");
     setHasVisitedBefore(!!hasVisited);
-  }, []);
-  
-  // Change raccoon position based on route
-  useEffect(() => {
-    const handleRouteChange = () => {
-      const path = window.location.pathname;
-      
-      if (path === "/") {
-        setPosition("bottom-right");
-      } else if (path.includes("/bands")) {
-        setPosition("top-right");
-      } else if (path.includes("/signup") || path.includes("/login")) {
-        setPosition("bottom-left");
-      } else {
-        setPosition("bottom-right");
-      }
-    };
-    
-    // Initial check
-    handleRouteChange();
-    
-    // Listen for route changes
-    window.addEventListener("popstate", handleRouteChange);
-    
-    return () => {
-      window.removeEventListener("popstate", handleRouteChange);
-    };
   }, []);
   
   return (
@@ -69,8 +69,7 @@ const App = () => {
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              {/* Only show raccoon if not on welcome page */}
-              {window.location.pathname !== "/welcome" && <RaccoonMascot position={position} />}
+              <RaccoonHandler />
               <Routes>
                 {/* Welcome page is always accessible directly */}
                 <Route path="/welcome" element={<Welcome />} />

@@ -21,12 +21,12 @@ const Welcome = () => {
     {
       title: "Easy Booking Process",
       description: "Browse bands by genre, location, and availability. Compare pricing and packages in one place.",
-      triggerPosition: 0.45, // Show when page is scrolled 45%
+      triggerPosition: 0.50, // Show when page is scrolled 50%
     },
     {
       title: "Reliable Performance",
       description: "All bands are vetted for quality and reliability. Read reviews from other clients before booking.",
-      triggerPosition: 0.65, // Show when page is scrolled 65%
+      triggerPosition: 0.75, // Show when page is scrolled 75%
     }
   ];
 
@@ -56,7 +56,7 @@ const Welcome = () => {
         // Determine which modal to show based on scroll position
         infoSections.forEach((section, index) => {
           if (scrollPercentage >= section.triggerPosition && 
-              scrollPercentage < (index < infoSections.length - 1 ? infoSections[index + 1].triggerPosition : 0.8)) {
+              scrollPercentage < (index < infoSections.length - 1 ? infoSections[index + 1].triggerPosition : 0.95)) {
             setActiveModal(index);
           }
         });
@@ -80,7 +80,7 @@ const Welcome = () => {
   };
 
   return (
-    <div ref={pageRef} className="overflow-x-hidden h-[2000vh] relative">
+    <div ref={pageRef} className="overflow-x-hidden h-[5000vh] relative">
       {/* Parallax container with all layers */}
       <ParallaxContainer 
         scrollPosition={scrollPosition}

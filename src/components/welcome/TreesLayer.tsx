@@ -9,7 +9,8 @@ interface TreesLayerProps {
 const TreesLayer: React.FC<TreesLayerProps> = ({ scrollPosition }) => {
   // Trees appear after mountains are partially visible (around 20% scroll)
   const startPosition = 0.2; // When trees start appearing
-  const translateY = Math.min(200, Math.max(0, (1 - Math.max(0, (scrollPosition - startPosition) * 0.2)) * 200));
+  const translateY = Math.min(100, Math.max(0, (1 - Math.max(0, (scrollPosition - startPosition) * 0.1)) * 100));
+  const opacity = Math.min(1, Math.max(0, (scrollPosition - startPosition) * 2));
   
   return (
     <div 
@@ -21,8 +22,9 @@ const TreesLayer: React.FC<TreesLayerProps> = ({ scrollPosition }) => {
         backgroundRepeat: "no-repeat",
         height: "40vh",
         transform: `translateY(${translateY}%)`,
+        opacity,
         zIndex: 3,
-        transition: "transform 0.1s ease-out"
+        transition: "transform 0.1s ease-out, opacity 0.1s ease-out"
       }}
     />
   );
