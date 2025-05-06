@@ -18,7 +18,7 @@ const FenceLayer: React.FC<FenceLayerProps> = ({ scrollPosition }) => {
         backgroundSize: "cover",
         backgroundPosition: "bottom center",
         backgroundRepeat: "no-repeat",
-        height: "100vh",
+        height: "70vh",
         opacity,
         zIndex: 4,
       }}
