@@ -99,7 +99,7 @@ const Welcome = () => {
         <div 
           className="absolute top-0 left-0 w-[200%] h-full bg-sky-200" 
           style={{ 
-            backgroundImage: `url('/lovable-uploads/93cf873b-02d6-4da8-99a9-09c557416601.png')`,
+            backgroundImage: `url('/images/clouds.png')`,
             backgroundSize: "contain",
             backgroundRepeat: "repeat-x",
             transform: `translateX(-${scrollPosition * 20}%)`,
@@ -111,7 +111,7 @@ const Welcome = () => {
         <div 
           className="absolute w-full h-full"
           style={{ 
-            backgroundImage: `url('/lovable-uploads/9c4388d6-aa9f-488e-b113-e26968aa433b.png')`,
+            backgroundImage: `url('/images/mountains.png')`,
             backgroundSize: "cover",
             backgroundPosition: "bottom",
             backgroundRepeat: "repeat-x",
@@ -125,7 +125,7 @@ const Welcome = () => {
         <div 
           className="absolute w-full h-full"
           style={{ 
-            backgroundImage: `url('/lovable-uploads/8927b987-ce53-4280-809a-69c112ef47a9.png')`,
+            backgroundImage: `url('/images/trees.png')`,
             backgroundSize: "cover",
             backgroundPosition: "bottom",
             backgroundRepeat: "repeat-x",
@@ -139,7 +139,7 @@ const Welcome = () => {
         <div 
           className="absolute w-full h-1/2"
           style={{ 
-            backgroundImage: `url('/lovable-uploads/fdc3fb76-7813-40c7-8a71-d5625d22fbb7.png')`,
+            backgroundImage: `url('/images/fence.png')`,
             backgroundSize: "cover",
             backgroundPosition: "bottom",
             backgroundRepeat: "repeat-x",
@@ -154,13 +154,13 @@ const Welcome = () => {
           className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none"
           style={{ opacity: Math.max(0, 1 - scrollPosition * 5) }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg mb-4">
+          <h1 className="text-5xl md:text-7xl font-bold text-primary drop-shadow-lg mb-4">
             Welcome to Band-it
           </h1>
-          <p className="text-xl md:text-2xl text-white drop-shadow-md max-w-2xl text-center px-4">
+          <p className="text-xl md:text-2xl text-foreground drop-shadow-md max-w-2xl text-center px-4">
             Scroll down to discover how we can help you find the perfect band for your next event
           </p>
-          <div className="animate-bounce mt-12 text-white">
+          <div className="animate-bounce mt-12 text-foreground">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 5v14M19 12l-7 7-7-7"/>
             </svg>

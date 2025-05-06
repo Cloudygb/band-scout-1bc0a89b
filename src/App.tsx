@@ -72,7 +72,10 @@ const App = () => {
               {/* Only show raccoon if not on welcome page */}
               {window.location.pathname !== "/welcome" && <RaccoonMascot position={position} />}
               <Routes>
-                {/* Show welcome page as entry point for first-time visitors */}
+                {/* Welcome page without Layout wrapper */}
+                <Route path="/welcome" element={<Welcome />} />
+                
+                {/* Use Navigate for first-time visitors, otherwise show home page with layout */}
                 <Route path="/" element={!hasVisitedBefore ? <Navigate to="/welcome" /> : <Layout />}>
                   <Route index element={<Index />} />
                   <Route path="/about" element={<About />} />
@@ -82,13 +85,10 @@ const App = () => {
                   <Route path="/login" element={<Login />} />
                   <Route path="/band-profile-setup" element={<BandProfileSetup />} />
                   <Route path="/client-profile-setup" element={<ClientProfileSetup />} />
-                  <Route path="/welcome" element={<Welcome />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/booking-success" element={<BookingSuccess />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 </Route>
-                {/* Welcome page without Layout wrapper */}
-                <Route path="/welcome" element={<Welcome />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
