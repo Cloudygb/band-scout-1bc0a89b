@@ -77,21 +77,59 @@ const App = () => {
                 
                 {/* Root path - redirect to welcome if first visit, otherwise show home */}
                 <Route path="/" element={
-                  !hasVisitedBefore ? <Navigate to="/welcome" /> : <Layout><Index /></Layout>
+                  !hasVisitedBefore ? <Navigate to="/welcome" /> : (
+                    <Layout>
+                      <Index />
+                    </Layout>
+                  )
                 } />
                 
                 {/* All other routes within layout */}
-                <Route element={<Layout />}>
-                  <Route path="/about" element={<About />} />
-                  <Route path="/how-it-works" element={<HowItWorks />} />
-                  <Route path="/bands" element={<BandsListing />} />
-                  <Route path="/signup" element={<SignUp />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/band-profile-setup" element={<BandProfileSetup />} />
-                  <Route path="/client-profile-setup" element={<ClientProfileSetup />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="/booking-success" element={<BookingSuccess />} />
-                </Route>
+                <Route path="/about" element={
+                  <Layout>
+                    <About />
+                  </Layout>
+                } />
+                <Route path="/how-it-works" element={
+                  <Layout>
+                    <HowItWorks />
+                  </Layout>
+                } />
+                <Route path="/bands" element={
+                  <Layout>
+                    <BandsListing />
+                  </Layout>
+                } />
+                <Route path="/signup" element={
+                  <Layout>
+                    <SignUp />
+                  </Layout>
+                } />
+                <Route path="/login" element={
+                  <Layout>
+                    <Login />
+                  </Layout>
+                } />
+                <Route path="/band-profile-setup" element={
+                  <Layout>
+                    <BandProfileSetup />
+                  </Layout>
+                } />
+                <Route path="/client-profile-setup" element={
+                  <Layout>
+                    <ClientProfileSetup />
+                  </Layout>
+                } />
+                <Route path="/privacy-policy" element={
+                  <Layout>
+                    <PrivacyPolicy />
+                  </Layout>
+                } />
+                <Route path="/booking-success" element={
+                  <Layout>
+                    <BookingSuccess />
+                  </Layout>
+                } />
                 
                 {/* 404 page */}
                 <Route path="*" element={<NotFound />} />
