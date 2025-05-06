@@ -17,6 +17,7 @@ const MountainsLayer: React.FC<MountainsLayerProps> = ({ scrollPosition }) => {
         backgroundSize: "cover",
         backgroundPosition: "bottom center",
         backgroundRepeat: "no-repeat",
+        height: "90vh",
         opacity,
         zIndex: 2,
       }}
