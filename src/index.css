@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -177,6 +178,18 @@
   animation: wander 4s ease-in-out infinite;
 }
 
+/* Wave animation for raccoon arm */
+@keyframes wave {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(15deg); }
+  50% { transform: rotate(0); }
+  75% { transform: rotate(15deg); }
+}
+
+.animate-wave {
+  animation: wave 0.8s infinite ease-in-out;
+}
+
 /* Speech bubble fade-in/fade-out animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -194,4 +207,9 @@
 
 .speech-bubble-disappear {
   animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* Welcome raccoon transitions */
+.welcome-raccoon {
+  transition: left 0.5s ease-in-out, right 0.5s ease-in-out, bottom 0.5s ease-in-out;
 }

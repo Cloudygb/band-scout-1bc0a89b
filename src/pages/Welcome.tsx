@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ParallaxContainer from "@/components/welcome/ParallaxContainer";
 import ScrollingTextContainer from "@/components/welcome/ScrollingTextContainer";
+import WelcomeRaccoonMascot from "@/components/welcome/WelcomeRaccoonMascot";
 
 interface TextSection {
   title: string;
@@ -15,6 +16,7 @@ const Welcome = () => {
   const navigate = useNavigate();
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showFinalModal, setShowFinalModal] = useState(false);
+  const [activeTextIndex, setActiveTextIndex] = useState(-1);
   const pageRef = useRef<HTMLDivElement>(null);
   
   // Text sections that appear and disappear as user scrolls
@@ -62,8 +64,17 @@ const Welcome = () => {
         
         setScrollPosition(scrollPercentage);
         
+        // Determine which text section is active
+        let active = -1;
+        textSections.forEach((section, index) => {
+          if (scrollPercentage >= section.appearPosition && 
+              scrollPercentage <= section.disappearPosition) {
+            active = index;
+          }
+        });
+        setActiveTextIndex(active);
+        
         // Show final modal ONLY when reaching the very bottom (98+%)
-        // This ensures all images are fully visible and user has scrolled all the way down
         if (scrollPercentage > 0.98) {
           setShowFinalModal(true);
         } else {
@@ -99,6 +110,13 @@ const Welcome = () => {
           scrollPosition={scrollPosition}
         />
       ))}
+
+      {/* Animated raccoon mascot */}
+      <WelcomeRaccoonMascot 
+        scrollPosition={scrollPosition}
+        activeTextIndex={activeTextIndex}
+        showFinalModal={showFinalModal}
+      />
     </div>
   );
 };

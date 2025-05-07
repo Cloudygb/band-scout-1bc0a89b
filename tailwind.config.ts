@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -140,6 +141,12 @@ export default {
 					'50%': { transform: 'translate(0, 4px)' },
 					'75%': { transform: 'translate(-2px, 2px)' },
 					'100%': { transform: 'translate(0, 0)' }
+				},
+				'wave': {
+					'0%, 100%': { transform: 'rotate(0deg)' },
+					'25%': { transform: 'rotate(15deg)' },
+					'50%': { transform: 'rotate(0deg)' },
+					'75%': { transform: 'rotate(15deg)' }
 				}
 			},
 			animation: {
@@ -150,6 +157,7 @@ export default {
 				'bobble': 'bobble 3s ease-in-out infinite',
 				'float': 'float 4s ease-in-out infinite',
 				'wander': 'wander 5s ease-in-out infinite',
+				'wave': 'wave 0.8s ease-in-out infinite'
 			}
 		}
 	},
