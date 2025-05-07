@@ -171,7 +171,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         <img
           src={TAIL}
           alt="Raccoon Tail"
-          className="absolute -left-10 bottom-0 w-116 h-auto z-10"
+          className="absolute -left-10 bottom-0 w-196 h-auto z-10"
         />
 
         {/* Body layer */}
@@ -185,14 +185,14 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         <img
           src={LEFT_ARM}
           alt="Raccoon Left Arm"
-          className="absolute left-0 top-1/2 w-110 h-auto z-30"
+          className="absolute left-0 top-1/2 w-196 h-auto z-30"
         />
 
         {/* Right arm layer - with wave animation */}
         <img
           src={RIGHT_ARM}
           alt="Raccoon Right Arm"
-          className={`absolute right-0 top-1/2 w-110 h-auto z-30 origin-top ${
+          className={`absolute right-0 top-1/2 w-196 h-auto z-30 origin-top ${
             isWaving ? "animate-wave" : ""
           }`}
           style={{
@@ -206,7 +206,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
             <img
               src={RACCOON_HEAD}
               alt="Raccoon Head"
-              className="w-136 h-auto"
+              className="w-196 h-auto"
             />
 
             {/* Eyes layer */}
@@ -214,7 +214,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
               <img
                 src={RACCOON_EYES}
                 alt="Raccoon Eyes"
-                className="w-128 h-auto animate-wander"
+                className="w-196 h-auto animate-wander"
               />
             </div>
 
@@ -223,7 +223,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
               <img
                 src={getMouthImage(emotion)}
                 alt={`Raccoon ${emotion} mouth`}
-                className="w-120 h-auto transition-opacity duration-300"
+                className="w-196 h-auto transition-opacity duration-300"
               />
             </div>
           </div>
