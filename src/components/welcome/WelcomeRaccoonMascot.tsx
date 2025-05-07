@@ -201,7 +201,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         />
 
         {/* Head layer */}
-        <div className="absolute" style={{ top: '2px', left: '6px', zIndex: 40 }}>
+        <div className="absolute" style={{ top: '-80px', left: '6px', zIndex: 40 }}>
           <div className="animate-bobble" style={{ animation: `bobble ${config.animations.bob}ms infinite ease-in-out` }}>
             <img
               src={RACCOON_HEAD}
