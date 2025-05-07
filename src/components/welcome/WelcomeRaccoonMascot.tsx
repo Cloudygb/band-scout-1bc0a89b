@@ -206,7 +206,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
             <img
               src={RACCOON_HEAD}
               alt="Raccoon Head"
-              className="w-296 h-auto"
+              className="w-196 h-auto"
             />
 
             {/* Eyes layer */}
