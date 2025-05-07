@@ -185,7 +185,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         <img
           src={LEFT_ARM}
           alt="Raccoon Left Arm"
-          className="absolute left-0 top-1/2 w-2566 h-auto z-30"
+          className="absolute left-0 top-1/2 w-256 h-auto z-30"
         />
 
         {/* Right arm layer - with wave animation */}
