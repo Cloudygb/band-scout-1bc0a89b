@@ -166,7 +166,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         transition: `all ${config.animations.transition}ms ease-in-out`
       }}
     >
-      <div className="relative w-40">
+      <div className="relative w-96">
         {/* Tail layer */}
         <img
           src={TAIL}
