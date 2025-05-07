@@ -166,64 +166,77 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         transition: `all ${config.animations.transition}ms ease-in-out`
       }}
     >
-      <div className="relative w-256">
+      <div className="relative" style={{ width: "256px" }}>
         {/* Tail layer */}
         <img
           src={TAIL}
           alt="Raccoon Tail"
-          className="absolute -left-10 bottom-0 w-256 h-auto z-10"
+          className="absolute"
+          style={{ left: "-40px", bottom: "0", width: "256px", height: "auto", zIndex: 10 }}
         />
 
         {/* Body layer */}
         <img
           src={RACCOON_BODY}
           alt="Raccoon Body"
-          className="w-full h-auto relative z-20"
+          style={{ width: "100%", height: "auto", position: "relative", zIndex: 20 }}
         />
 
         {/* Left arm layer */}
         <img
           src={LEFT_ARM}
           alt="Raccoon Left Arm"
-          className="absolute left-0 top-1/2 w-256 h-auto z-30"
+          className="absolute"
+          style={{ left: "-20px", top: "50%", width: "120px", height: "auto", zIndex: 30 }}
         />
 
         {/* Right arm layer - with wave animation */}
         <img
           src={RIGHT_ARM}
           alt="Raccoon Right Arm"
-          className={`absolute right-0 top-1/2 w-256 h-auto z-30 origin-top ${
-            isWaving ? "animate-wave" : ""
-          }`}
-          style={{
-            animation: isWaving ? `wave ${config.animations.bob}ms infinite ease-in-out` : "none"
+          className={`absolute origin-top ${isWaving ? "animate-wave" : ""}`}
+          style={{ 
+            right: "-20px", 
+            top: "50%", 
+            width: "120px", 
+            height: "auto", 
+            zIndex: 30,
+            animation: isWaving ? `wave ${config.animations.bob}ms infinite ease-in-out` : "none" 
           }}
         />
 
         {/* Head layer */}
-        <div className="absolute" style={{ top: '-80px', left: '6px', zIndex: 40 }}>
-          <div className="animate-bobble" style={{ animation: `bobble ${config.animations.bob}ms infinite ease-in-out` }}>
+        <div className="absolute" style={{ top: "-80px", left: "6px", zIndex: 40, width: "256px" }}>
+          <div 
+            className="animate-bobble" 
+            style={{ 
+              animation: `bobble ${config.animations.bob}ms infinite ease-in-out`,
+              width: "100%"
+            }}
+          >
             <img
               src={RACCOON_HEAD}
               alt="Raccoon Head"
-              className="w-256 h-auto"
+              style={{ width: "100%", height: "auto" }}
             />
 
             {/* Eyes layer */}
-            <div className="absolute" style={{ top: '38%', left: '50%', transform: 'translateX(-50%)', zIndex: 50 }}>
+            <div className="absolute" style={{ top: "38%", left: "50%", transform: "translateX(-50%)", zIndex: 50, width: "100%" }}>
               <img
                 src={RACCOON_EYES}
                 alt="Raccoon Eyes"
-                className="w-256 h-auto animate-wander"
+                className="animate-wander"
+                style={{ width: "100%", height: "auto" }}
               />
             </div>
 
             {/* Mouth layer - changes based on emotion */}
-            <div className="absolute" style={{ top: '65%', left: '50%', transform: 'translateX(-50%)', zIndex: 50 }}>
+            <div className="absolute" style={{ top: "65%", left: "50%", transform: "translateX(-50%)", zIndex: 50, width: "100%" }}>
               <img
                 src={getMouthImage(emotion)}
                 alt={`Raccoon ${emotion} mouth`}
-                className="w-256 h-auto transition-opacity duration-300"
+                className="transition-opacity duration-300"
+                style={{ width: "100%", height: "auto" }}
               />
             </div>
           </div>
