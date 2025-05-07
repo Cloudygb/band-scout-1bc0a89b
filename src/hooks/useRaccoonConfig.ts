@@ -52,7 +52,7 @@ const defaultConfig: RaccoonConfig = {
     bob: 3000
   },
   position: {
-    initial: { left: -200, bottom: 20 },
+    initial: { left: -400, bottom: 20 },
     final: { right: 20, bottom: 20 }
   },
   emotions: {

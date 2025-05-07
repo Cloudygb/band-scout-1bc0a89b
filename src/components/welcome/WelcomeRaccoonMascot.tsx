@@ -36,7 +36,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
   const [visible, setVisible] = useState(false);
   const [emotion, setEmotion] = useState<RaccoonEmotion>("neutral");
   const [isWaving, setIsWaving] = useState(false);
-  const [position, setPosition] = useState<PositionState>({ left: -200, bottom: 20 });
+  const [position, setPosition] = useState<PositionState>({ left: -400, bottom: 20 });
   
   // Get configuration from our raccoon config hook
   const config = useRaccoonConfig();
@@ -166,54 +166,76 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         transition: `all ${config.animations.transition}ms ease-in-out`
       }}
     >
-      <div className="relative" style={{ width: "256px" }}>
+      <div className="relative" style={{ width: "800px" }}>
         {/* Tail layer */}
         <img
           src={TAIL}
           alt="Raccoon Tail"
-          className="absolute"
-          style={{ left: "-40px", bottom: "0", width: "256px", height: "auto", zIndex: 10 }}
+          style={{ 
+            position: "absolute",
+            left: "-120px", 
+            bottom: "0", 
+            width: "600px", 
+            height: "auto", 
+            zIndex: 10 
+          }}
         />
 
         {/* Body layer */}
         <img
           src={RACCOON_BODY}
           alt="Raccoon Body"
-          style={{ width: "100%", height: "auto", position: "relative", zIndex: 20 }}
+          style={{ 
+            width: "100%", 
+            height: "auto", 
+            position: "relative", 
+            zIndex: 20 
+          }}
         />
 
         {/* Left arm layer */}
         <img
           src={LEFT_ARM}
           alt="Raccoon Left Arm"
-          className="absolute"
-          style={{ left: "-20px", top: "50%", width: "120px", height: "auto", zIndex: 30 }}
+          style={{ 
+            position: "absolute",
+            left: "-60px", 
+            top: "50%", 
+            width: "400px", 
+            height: "auto", 
+            zIndex: 30 
+          }}
         />
 
         {/* Right arm layer - with wave animation */}
         <img
           src={RIGHT_ARM}
           alt="Raccoon Right Arm"
-          className={`absolute origin-top ${isWaving ? "animate-wave" : ""}`}
+          className={isWaving ? "animate-wave" : ""}
           style={{ 
-            right: "-20px", 
+            position: "absolute",
+            right: "-60px", 
             top: "50%", 
-            width: "120px", 
+            width: "400px", 
             height: "auto", 
             zIndex: 30,
+            transformOrigin: "top center",
             animation: isWaving ? `wave ${config.animations.bob}ms infinite ease-in-out` : "none" 
           }}
         />
 
         {/* Head layer */}
-        <div className="absolute" style={{ top: "-80px", left: "6px", zIndex: 40, width: "256px" }}>
-          <div 
-            className="animate-bobble" 
-            style={{ 
-              animation: `bobble ${config.animations.bob}ms infinite ease-in-out`,
-              width: "100%"
-            }}
-          >
+        <div style={{ 
+          position: "absolute", 
+          top: "-260px", 
+          left: "20px", 
+          zIndex: 40, 
+          width: "800px" 
+        }}>
+          <div style={{ 
+            animation: `bobble ${config.animations.bob}ms infinite ease-in-out`,
+            width: "100%"
+          }}>
             <img
               src={RACCOON_HEAD}
               alt="Raccoon Head"
@@ -221,7 +243,14 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
             />
 
             {/* Eyes layer */}
-            <div className="absolute" style={{ top: "38%", left: "50%", transform: "translateX(-50%)", zIndex: 50, width: "100%" }}>
+            <div style={{ 
+              position: "absolute", 
+              top: "38%", 
+              left: "50%", 
+              transform: "translateX(-50%)", 
+              zIndex: 50, 
+              width: "100%" 
+            }}>
               <img
                 src={RACCOON_EYES}
                 alt="Raccoon Eyes"
@@ -231,12 +260,22 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
             </div>
 
             {/* Mouth layer - changes based on emotion */}
-            <div className="absolute" style={{ top: "65%", left: "50%", transform: "translateX(-50%)", zIndex: 50, width: "100%" }}>
+            <div style={{ 
+              position: "absolute", 
+              top: "65%", 
+              left: "50%", 
+              transform: "translateX(-50%)", 
+              zIndex: 50, 
+              width: "100%" 
+            }}>
               <img
                 src={getMouthImage(emotion)}
                 alt={`Raccoon ${emotion} mouth`}
-                className="transition-opacity duration-300"
-                style={{ width: "100%", height: "auto" }}
+                style={{ 
+                  width: "100%", 
+                  height: "auto",
+                  transition: "opacity 300ms" 
+                }}
               />
             </div>
           </div>
