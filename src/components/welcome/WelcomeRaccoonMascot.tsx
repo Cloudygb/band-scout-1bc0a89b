@@ -166,12 +166,12 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         transition: `all ${config.animations.transition}ms ease-in-out`
       }}
     >
-      <div className="relative w-96">
+      <div className="relative w-196">
         {/* Tail layer */}
         <img
           src={TAIL}
           alt="Raccoon Tail"
-          cclassName="w-full h-auto relative z-20"
+          className="absolute -left-10 bottom-0 w-16 h-auto z-10"
         />
 
         {/* Body layer */}
@@ -185,7 +185,7 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
         <img
           src={LEFT_ARM}
           alt="Raccoon Left Arm"
-          className="w-full h-auto relative z-20"
+          className="absolute left-0 top-1/2 w-10 h-auto z-30"
         />
 
         {/* Right arm layer - with wave animation */}
