@@ -13,7 +13,7 @@ const FinalCallToAction: React.FC<FinalCallToActionProps> = ({ handleContinue })
       <div className="animate-bounce mb-4">
         <div className="relative">
           <img 
-            src="/lovable-uploads/04e8d05e-ecd0-4b2d-b616-f3261ce37016.png" 
+            src="/images/04e8d05e-ecd0-4b2d-b616-f3261ce37016.png" 
             alt="Raccoon mascot" 
             className="w-24 h-auto"
           />

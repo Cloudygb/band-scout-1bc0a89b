@@ -1,6 +1,22 @@
 
 import { useEffect, useState, useRef } from "react";
-import { RACCOON_BODY, RACCOON_HEAD, RACCOON_EYES } from "@/assets";
+import {
+  RACCOON_BODY,
+  RACCOON_HEAD,
+  RACCOON_EYES,
+  MOUTH_NEUTRAL,
+  MOUTH_HAPPY,
+  MOUTH_EXCITED,
+  MOUTH_CONFUSED,
+  MOUTH_SAD,
+  MOUTH_ANGRY,
+  MOUTH_SURPRISED,
+  LEFT_ARM,
+  RIGHT_ARM,
+  TAIL
+} from "@/assets/raccoonParts";
+
+type RaccoonEmotion = "neutral" | "happy" | "excited" | "confused" | "sad" | "angry" | "surprised";
 
 interface RaccoonMascotProps {
   position?: "top-right" | "bottom-right" | "bottom-left" | "top-left";
@@ -36,9 +52,12 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
   const [showBubble, setShowBubble] = useState(false);
   const [currentQuote, setCurrentQuote] = useState("");
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [emotion, setEmotion] = useState<RaccoonEmotion>("neutral");
+  const [isWaving, setIsWaving] = useState(false);
   const eyesRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const bubbleTimeoutRef = useRef<number | null>(null);
+  const waveTimerRef = useRef<number | null>(null);
   const maxEyeMovement = 5; // Maximum pixels eyes can move
   
   // Detect mobile devices
@@ -90,6 +109,9 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
       if (bubbleTimeoutRef.current) {
         window.clearTimeout(bubbleTimeoutRef.current);
       }
+      if (waveTimerRef.current) {
+        window.clearTimeout(waveTimerRef.current);
+      }
     };
   }, []);
 
@@ -99,12 +121,40 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
     return raccoonQuotes[randomIndex];
   };
 
+  // Start waving animation
+  const startWaving = () => {
+    setIsWaving(true);
+    setEmotion("excited");
+    
+    // Stop waving after a duration
+    if (waveTimerRef.current) {
+      window.clearTimeout(waveTimerRef.current);
+    }
+    
+    waveTimerRef.current = window.setTimeout(() => {
+      setIsWaving(false);
+      setEmotion("neutral");
+    }, 2000);
+  };
+
   // Handle raccoon click
   const handleRaccoonClick = () => {
     // Clear existing timeout if there is one
     if (bubbleTimeoutRef.current) {
       window.clearTimeout(bubbleTimeoutRef.current);
     }
+
+    // Change emotion based on current emotion or randomly
+    if (emotion === "neutral" || emotion === "happy") {
+      setEmotion("excited");
+    } else if (emotion === "excited") {
+      setEmotion("happy");
+    } else {
+      setEmotion("neutral");
+    }
+
+    // Start waving
+    startWaving();
 
     // If the bubble is already showing, cycle to a new quote
     if (showBubble) {
@@ -132,8 +182,30 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
       setTimeout(() => {
         setShowBubble(false);
         setIsFadingOut(false);
+        setEmotion("neutral"); // Return to neutral emotion
       }, 300); // Match the fadeOut animation duration
     }, 5000);
+  };
+  
+  // Get the current mouth image based on emotion
+  const getMouthImage = (emotion: RaccoonEmotion) => {
+    switch (emotion) {
+      case "happy":
+        return MOUTH_HAPPY;
+      case "excited":
+        return MOUTH_EXCITED;
+      case "confused":
+        return MOUTH_CONFUSED;
+      case "sad":
+        return MOUTH_SAD;
+      case "angry":
+        return MOUTH_ANGRY;
+      case "surprised":
+        return MOUTH_SURPRISED;
+      case "neutral":
+      default:
+        return MOUTH_NEUTRAL;
+    }
   };
   
   // Position styles
@@ -176,7 +248,7 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
   
   return (
     <div 
-      className={`raccoon-container ${positionStyles[position]} cursor-pointer`}
+      className={`raccoon-container ${positionStyles[position]} cursor-pointer z-50 fixed`}
       ref={containerRef}
       onClick={handleRaccoonClick}
     >
@@ -190,35 +262,122 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
         </div>
       )}
       
-      <div className="relative w-40">
+      <div className="relative" style={{ width: "250px" }}>
+        {/* Tail layer */}
+        <img
+          src={TAIL}
+          alt="Raccoon Tail"
+          style={{ 
+            position: "absolute",
+            left: "-38px", 
+            bottom: "0", 
+            width: "180px", 
+            height: "auto", 
+            zIndex: 10 
+          }}
+        />
+
         {/* Body layer */}
         <img 
           src={RACCOON_BODY} 
           alt="Raccoon Body" 
-          className="w-full h-auto relative z-10"
+          style={{ 
+            width: "100%", 
+            height: "auto", 
+            position: "relative", 
+            zIndex: 20 
+          }}
+        />
+        
+        {/* Left arm layer */}
+        <img
+          src={LEFT_ARM}
+          alt="Raccoon Left Arm"
+          style={{ 
+            position: "absolute",
+            left: "-20px", 
+            top: "50%", 
+            width: "120px", 
+            height: "auto", 
+            zIndex: 30 
+          }}
+        />
+
+        {/* Right arm layer - with wave animation */}
+        <img
+          src={RIGHT_ARM}
+          alt="Raccoon Right Arm"
+          className={isWaving ? "animate-wave" : ""}
+          style={{ 
+            position: "absolute",
+            right: "-20px", 
+            top: "50%", 
+            width: "120px", 
+            height: "auto", 
+            zIndex: 30,
+            transformOrigin: "top center",
+            animation: isWaving ? "wave 2000ms infinite ease-in-out" : "none" 
+          }}
         />
         
         {/* Head layer - using fixed pixel values instead of percentages */}
-        <div className="absolute" style={{ top: '-18px', left: '6px', zIndex: 20 }}>
+        <div style={{ 
+          position: "absolute", 
+          top: '-70px', 
+          left: '2px', 
+          zIndex: 40,
+          width: "250px" 
+        }}>
           <div className="animate-bobble">
             <img 
               src={RACCOON_HEAD} 
               alt="Raccoon Head" 
-              className="w-36 h-auto"
+              style={{
+                width: "100%",
+                height: "auto"
+              }}
             />
             
             {/* Eyes layer - using fixed position relative to head */}
-            <div className="absolute" style={{ top: '38%', left: '50%', transform: 'translateX(-50%)', zIndex: 30 }}>
+            <div style={{ 
+              position: "absolute",
+              top: '38%', 
+              left: '50%', 
+              transform: 'translateX(-50%)', 
+              zIndex: 50,
+              width: "100%" 
+            }}>
               <img 
                 ref={eyesRef}
                 src={RACCOON_EYES} 
                 alt="Raccoon Eyes" 
-                className={`w-28 h-auto transition-transform duration-300 ${isMobile ? 'animate-wander' : ''}`}
-                style={
-                  !isMobile 
-                    ? { transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)` }
-                    : {}
-                }
+                className={isMobile ? "animate-wander" : ""}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  transition: "transform 300ms ease",
+                  transform: !isMobile ? `translate(${mousePosition.x}px, ${mousePosition.y}px)` : 'none'
+                }}
+              />
+            </div>
+            
+            {/* Mouth layer - changes based on emotion */}
+            <div style={{ 
+              position: "absolute", 
+              top: "65%", 
+              left: "50%", 
+              transform: "translateX(-50%)", 
+              zIndex: 50, 
+              width: "100%" 
+            }}>
+              <img
+                src={getMouthImage(emotion)}
+                alt={`Raccoon ${emotion} mouth`}
+                style={{ 
+                  width: "100%", 
+                  height: "auto",
+                  transition: "opacity 300ms" 
+                }}
               />
             </div>
           </div>
