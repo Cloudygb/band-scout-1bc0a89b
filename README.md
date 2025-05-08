@@ -1,4 +1,4 @@
-# 🛠 Full-Stack Web & Mobile App: Band-it
+# Full-Stack Web & Mobile App: Band-it
 
 Welcome! This repository contains the full development lifecycle of a custom-built web and mobile application — created entirely from scratch by a solo developer (me!). From branding to backend, UI/UX to AWS deployment, this is an end-to-end demonstration of full-stack expertise and self-driven project execution.
 
