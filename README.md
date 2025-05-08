@@ -33,20 +33,20 @@ This application is designed to serve users across both web and mobile platforms
 ## Project Workflow
 
 ### PHASE 1: Planning
-- Define purpose, audience, and feature set
-- Create user stories and flowcharts
-- Draft UI wireframes and app structure
+- Define purpose, audience, and feature set ✓
+- Create user stories and flowcharts ✓
+- Draft UI wireframes and app structure ✓
 
 ### PHASE 2: Branding & Design
-- Name, domain, logo, and color scheme
-- Build UI/UX components and layout
-- Establish consistent visual style
+- Name, domain, logo, and color scheme ✓
+- Build UI/UX components and layout ✓
+- Establish consistent visual style ✓
 
 ### PHASE 3: Backend & AWS Architecture
-- Set up AWS account, roles, and permissions
-- Configure S3, CloudFront, Aurora, and Lambda
-- Build API routes via API Gateway
-- Secure endpoints with IAM and Cognito
+- Set up AWS account, roles, and permissions ✓
+- Configure S3, CloudFront, Aurora, and Lambda ~
+- Build API routes via API Gateway ~
+- Secure endpoints with IAM and Cognito ~
 
 ### PHASE 4: Development
 - Frontend (Web & Mobile)
