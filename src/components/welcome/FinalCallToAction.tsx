@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { RACCOON_EYES } from "@/assets/raccoonParts"; // Using imported path
 
 interface FinalCallToActionProps {
   handleContinue: () => void;
@@ -13,7 +14,7 @@ const FinalCallToAction: React.FC<FinalCallToActionProps> = ({ handleContinue })
       <div className="animate-bounce mb-4">
         <div className="relative">
           <img 
-            src="/images/04e8d05e-ecd0-4b2d-b616-f3261ce37016.png" 
+            src={RACCOON_EYES}
             alt="Raccoon mascot" 
             className="w-24 h-auto"
           />

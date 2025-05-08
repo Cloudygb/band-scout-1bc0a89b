@@ -263,14 +263,14 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
       )}
       
       <div className="relative" style={{ width: "250px" }}>
-        {/* Tail layer */}
+        {/* Tail layer - Adjusted position */}
         <img
           src={TAIL}
           alt="Raccoon Tail"
           style={{ 
             position: "absolute",
-            left: "-38px", 
-            bottom: "0", 
+            left: "60px", // Fixed from -38px to 60px
+            bottom: "-30px", // Adjusted from 0 to -30px
             width: "180px", 
             height: "auto", 
             zIndex: 10 
@@ -289,13 +289,13 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
           }}
         />
         
-        {/* Left arm layer */}
+        {/* Left arm layer - Adjusted position */}
         <img
           src={LEFT_ARM}
           alt="Raccoon Left Arm"
           style={{ 
             position: "absolute",
-            left: "-20px", 
+            left: "100px", // Fixed from -20px to 100px
             top: "50%", 
             width: "120px", 
             height: "auto", 
@@ -303,14 +303,14 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
           }}
         />
 
-        {/* Right arm layer - with wave animation */}
+        {/* Right arm layer - with wave animation - Adjusted position */}
         <img
           src={RIGHT_ARM}
           alt="Raccoon Right Arm"
           className={isWaving ? "animate-wave" : ""}
           style={{ 
             position: "absolute",
-            right: "-20px", 
+            right: "100px", // Fixed from -20px to 100px
             top: "50%", 
             width: "120px", 
             height: "auto", 
@@ -320,11 +320,11 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
           }}
         />
         
-        {/* Head layer - using fixed pixel values instead of percentages */}
+        {/* Head layer - Adjusted position */}
         <div style={{ 
           position: "absolute", 
-          top: '-70px', 
-          left: '2px', 
+          top: "-20px", // Adjusted from -70px to -20px
+          left: "2px", 
           zIndex: 40,
           width: "250px" 
         }}>
@@ -338,10 +338,10 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
               }}
             />
             
-            {/* Eyes layer - using fixed position relative to head */}
+            {/* Eyes layer - using fixed position relative to head - Adjusted position */}
             <div style={{ 
               position: "absolute",
-              top: '38%', 
+              top: "-400%", // Adjusted from 38% to -400% 
               left: '50%', 
               transform: 'translateX(-50%)', 
               zIndex: 50,
@@ -361,10 +361,10 @@ const RaccoonMascot = ({ position = "bottom-right" }: RaccoonMascotProps) => {
               />
             </div>
             
-            {/* Mouth layer - changes based on emotion */}
+            {/* Mouth layer - changes based on emotion - Adjusted position */}
             <div style={{ 
               position: "absolute", 
-              top: "65%", 
+              top: "-335%", // Adjusted from 65% to -335%
               left: "50%", 
               transform: "translateX(-50%)", 
               zIndex: 50, 

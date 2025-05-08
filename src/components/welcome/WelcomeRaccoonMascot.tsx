@@ -167,14 +167,14 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
       }}
     >
       <div className="relative" style={{ width: "800px" }}>
-        {/* Tail layer */}
+        {/* Tail layer - Adjusted position */}
         <img
           src={TAIL}
           alt="Raccoon Tail"
           style={{ 
             position: "absolute",
-            left: "-120px", 
-            bottom: "0", 
+            left: "180px", // Fixed from -120px to 180px
+            bottom: "30px", // Adjusted from 0 to 30px
             width: "600px", 
             height: "auto", 
             zIndex: 10 
@@ -193,13 +193,13 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
           }}
         />
 
-        {/* Left arm layer */}
+        {/* Left arm layer - Adjusted position */}
         <img
           src={LEFT_ARM}
           alt="Raccoon Left Arm"
           style={{ 
             position: "absolute",
-            left: "-60px", 
+            left: "340px", // Fixed from -60px to 340px
             top: "50%", 
             width: "400px", 
             height: "auto", 
@@ -207,14 +207,14 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
           }}
         />
 
-        {/* Right arm layer - with wave animation */}
+        {/* Right arm layer - with wave animation - Adjusted position */}
         <img
           src={RIGHT_ARM}
           alt="Raccoon Right Arm"
           className={isWaving ? "animate-wave" : ""}
           style={{ 
             position: "absolute",
-            right: "-60px", 
+            right: "340px", // Fixed from -60px to 340px
             top: "50%", 
             width: "400px", 
             height: "auto", 
@@ -224,10 +224,10 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
           }}
         />
 
-        {/* Head layer */}
+        {/* Head layer - Adjusted position */}
         <div style={{ 
           position: "absolute", 
-          top: "-260px", 
+          top: "-210px", // Adjusted from -260px to -210px
           left: "20px", 
           zIndex: 40, 
           width: "800px" 
@@ -242,10 +242,10 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
               style={{ width: "100%", height: "auto" }}
             />
 
-            {/* Eyes layer */}
+            {/* Eyes layer - Adjusted position */}
             <div style={{ 
               position: "absolute", 
-              top: "38%", 
+              top: "-362%", // Adjusted from 38% to -362%
               left: "50%", 
               transform: "translateX(-50%)", 
               zIndex: 50, 
@@ -259,10 +259,10 @@ const WelcomeRaccoonMascot: React.FC<WelcomeRaccoonMascotProps> = ({
               />
             </div>
 
-            {/* Mouth layer - changes based on emotion */}
+            {/* Mouth layer - changes based on emotion - Adjusted position */}
             <div style={{ 
               position: "absolute", 
-              top: "65%", 
+              top: "-335%", // Adjusted from 65% to -335%
               left: "50%", 
               transform: "translateX(-50%)", 
               zIndex: 50, 
